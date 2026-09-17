@@ -260,6 +260,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    const modalGithub = document.getElementById('modal-github');
+    if (modalGithub) modalGithub.href = data.githubUrl || 'https://github.com/lakshyar-git';
+
     caseStudyModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   };

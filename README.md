@@ -22,8 +22,8 @@ A dynamic, eye-catching, and modern portfolio for **Lakshya R** (Computer Scienc
 
 1. **Hero Section**:
    - **Name**: Lakshya R
-   - **Title**: Computer Science & Data Science Student | Tech & AI Enthusiast
-   - **Tagline**: Final-year Computer Science student passionate about software development, embedded systems, and data-driven solutions.
+   - **Title**: Computer Science & Data Science Scholar | Software & Systems Developer
+   - **Tagline**: Undergraduate student concurrently pursuing Computer Science & Engineering alongside Data Science, passionate about building reliable software, embedded systems, and data-driven solutions.
    - **Academic Badge**: Dual-degree credentials (HITS 9.5 CGPA & IIT Madras 8.0 CGPA).
    - **CTAs**: Primary button `Explore Projects` (`#projects`) & secondary button `Contact Me` (`#contact`).
 
@@ -40,14 +40,16 @@ A dynamic, eye-catching, and modern portfolio for **Lakshya R** (Computer Scienc
    - **Soft Skills**: Communication, Problem-Solving, Team Collaboration, Adaptability, Critical Thinking.
    - **Languages**: English, Tamil, Hindi.
 
-5. **Education & Experience Timeline**:
+5. **Education, Internships & Certifications**:
    - **Education**:
      - B.Tech Computer Science & Engineering | Hindustan Institute of Technology and Science (2023–Present) | CGPA: 9.5/10
      - Degree Program in Data Science & Applications | IIT Madras (2024–Present) | CGPA: 8.0/10
-     - Gateway International School (CBSE) | 12th: 83% | 10th: 95%
    - **Internships**:
      - AI & Cloud Intern | Edunet Foundation (in collaboration with AICTE) (July 2025 – August 2025)
      - Artificial Intelligence Intern | Coincent (October 2024)
+   - **Certifications**:
+     - MongoDB Database Course | NoSQL Database Architecture & Data Modeling
+     - IBM SkillsBuild | Getting Started with AI & RAG Lab
 
 6. **Contact Section**:
    - Direct email: `lakshyar13@gmail.com` (with 1-click clipboard copy)
