@@ -258,8 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
-    document.getElementById('modal-github').href = data.githubUrl;
-    document.getElementById('modal-demo').href = data.demoUrl;
+
 
     caseStudyModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
