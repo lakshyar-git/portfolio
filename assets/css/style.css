@@ -26,6 +26,8 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--color-void);
+  background: radial-gradient(ellipse 130% 90% at 50% -10%, #151130 0%, #0c0d16 50%, #08090e 100%);
+  background-attachment: fixed;
   color: var(--color-starlight);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   text-rendering: optimizeLegibility;
@@ -228,6 +230,7 @@ h1, h2, h3, h4, .font-heading {
 .btn-shimmer {
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 20px rgba(124, 92, 252, 0.35);
 }
 
 .btn-shimmer::after {
@@ -237,9 +240,9 @@ h1, h2, h3, h4, .font-heading {
   left: -80%;
   width: 50%;
   height: 200%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
   transform: rotate(25deg);
-  animation: shimmerSweep 4.5s ease-in-out infinite;
+  animation: shimmerSweep 3.8s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -250,11 +253,11 @@ h1, h2, h3, h4, .font-heading {
 
 /* Living Cosmic Gradient Text Shimmer (Hero Headline) */
 .cosmic-shimmer-text {
-  background: linear-gradient(110deg, #F1F5F9 15%, #60A5FA 38%, #C084FC 55%, #F1F5F9 78%);
-  background-size: 220% auto;
+  background: linear-gradient(110deg, #FFFFFF 15%, #38BDF8 35%, #A855F7 55%, #F472B6 75%, #FFFFFF 95%);
+  background-size: 250% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: cosmicTextShimmer 6.5s ease-in-out infinite;
+  animation: cosmicTextShimmer 5s ease-in-out infinite;
 }
 
 @keyframes cosmicTextShimmer {
@@ -264,12 +267,12 @@ h1, h2, h3, h4, .font-heading {
 
 /* Portrait Radiant Halo Breathing */
 .cosmic-halo-breath {
-  animation: cosmicHaloBreath 4.5s ease-in-out infinite;
+  animation: cosmicHaloBreath 4s ease-in-out infinite;
 }
 
 @keyframes cosmicHaloBreath {
-  0%, 100% { transform: scale(1); opacity: 0.70; filter: blur(20px); }
-  50% { transform: scale(1.06); opacity: 0.95; filter: blur(26px); }
+  0%, 100% { transform: scale(1); opacity: 0.80; filter: blur(20px); }
+  50% { transform: scale(1.10); opacity: 1.0; filter: blur(30px); }
 }
 
 /* Dynamic Navbar Scroll Styling */
@@ -397,9 +400,9 @@ button:hover .pop-icon {
   z-index: 1;
   background: radial-gradient(
     650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-    rgba(124, 92, 252, 0.15),
-    rgba(59, 130, 246, 0.07) 40%,
-    transparent 70%
+    rgba(124, 92, 252, 0.22),
+    rgba(56, 189, 248, 0.12) 35%,
+    transparent 65%
   );
   transition: opacity 0.4s ease;
   will-change: background;
@@ -417,9 +420,9 @@ button:hover .pop-icon {
 .cosmic-nebula-glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(95px);
   pointer-events: none;
-  opacity: 0.40;
+  opacity: 0.80;
   z-index: 0;
   will-change: transform, opacity;
   transition: transform 0.8s ease-out;
