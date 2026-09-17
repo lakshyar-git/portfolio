@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'Cloud Host', val: 'IBM Cloud' },
         { label: 'Target', val: 'Zero Downtime' }
       ],
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/lakshyar-git',
       demoUrl: 'https://example.com'
     },
     'smart-plant-iot': {
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'Platform', val: 'Blynk IoT' },
         { label: 'Automation', val: '100% Closed-Loop' }
       ],
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/lakshyar-git',
       demoUrl: 'https://example.com'
     },
     'first-aid-voice': {
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'Audio Engine', val: 'Speech-to-Text' },
         { label: 'Response Time', val: 'Sub-second' }
       ],
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/lakshyar-git',
       demoUrl: 'https://example.com'
     }
   };
