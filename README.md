@@ -48,8 +48,10 @@ A dynamic, eye-catching, and modern portfolio for **Lakshya R** (Computer Scienc
      - AI & Cloud Intern | Edunet Foundation (in collaboration with AICTE) (July 2025 – August 2025)
      - Artificial Intelligence Intern | Coincent (October 2024)
    - **Certifications**:
+     - Lab: Retrieval Augmented Generation with LangChain | IBM SkillsBuild (July 2025)
+     - Journey to Cloud: Envisioning Your Solution | IBM SkillsBuild (Credly Verified) (July 2025)
+     - Getting Started with Artificial Intelligence | IBM SkillsBuild (Credly Verified) (July 2025)
      - MongoDB Database Course | NoSQL Database Architecture & Data Modeling
-     - IBM SkillsBuild | Getting Started with AI & RAG Lab
 
 6. **Contact Section**:
    - Direct email: `lakshyar13@gmail.com` (with 1-click clipboard copy)
