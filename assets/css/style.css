@@ -296,10 +296,10 @@ button:hover .pop-icon {
   height: 100vh;
   z-index: 1;
   background: radial-gradient(
-    600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-    rgba(124, 92, 252, 0.16),
-    rgba(56, 189, 248, 0.08) 35%,
-    transparent 65%
+    650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+    rgba(124, 92, 252, 0.1),
+    rgba(59, 130, 246, 0.04) 40%,
+    transparent 70%
   );
   transition: opacity 0.4s ease;
   will-change: background;
@@ -418,7 +418,7 @@ button:hover .pop-icon {
   .pop-hover:hover, .pop-icon:hover, .skill-chip:hover {
     transform: none !important;
   }
-  #cursor-glow, #ripple-canvas {
+  #cursor-glow {
     display: none !important;
   }
 }
