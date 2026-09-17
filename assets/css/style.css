@@ -334,26 +334,14 @@ button:hover .pop-icon {
   transform: translateX(4px);
 }
 
+/* Timeline node marker - deactivated to prevent overlapping in grid layout */
 .timeline-node::after {
-  content: '';
-  position: absolute;
-  left: -29px;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #12151E;
-  border: 2px solid #7C5CFC;
-  box-shadow: 0 0 12px rgba(124, 92, 252, 0.5);
-  z-index: 2;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: none;
 }
 
+/* Hover state deactivated */
 .timeline-node:hover::after {
-  transform: scale(1.4);
-  background: #7C5CFC;
-  box-shadow: 0 0 20px rgba(124, 92, 252, 0.85);
-  border-color: #F0F4F8;
+  display: none;
 }
 
 @media (max-width: 768px) {

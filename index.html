@@ -130,9 +130,11 @@
       <div class="w-full lg:w-3/5 space-y-6 flex flex-col items-start">
         
         <!-- Academic Distinction Badge with Subtle Pop -->
-        <div class="reveal-init reveal-down inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full text-xs font-medium glass-panel-subtle text-cosmic-grey border border-white/[0.08] pop-hover">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-starlight font-medium">B.Tech CSE @ HITS (CGPA: 9.5) · Data Science @ IIT Madras (CGPA: 8.0)</span>
+        <div class="reveal-init reveal-down inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium glass-panel-subtle text-cosmic-grey border border-white/[0.08] pop-hover max-w-full">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+          <span class="text-starlight font-medium">B.Tech CSE @ HITS (CGPA: 9.5)</span>
+          <span class="text-white/20 hidden sm:inline">·</span>
+          <span class="text-starlight font-medium">Data Science @ IIT Madras (CGPA: 8.0)</span>
         </div>
 
         <!-- Headline & Name -->
@@ -152,29 +154,40 @@
           </p>
         </div>
 
-        <!-- Action CTAs with High-Impact Pop Animations -->
-        <div class="reveal-init reveal-up delay-200 flex flex-wrap gap-4 items-center pt-2">
-          <!-- Primary CTA: Explore Projects -->
-          <a href="#projects" class="pop-hover inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-nebula-muted to-nebula hover:from-nebula hover:to-[#8c6eff] shadow-lg shadow-nebula/20 transition-all duration-300">
-            <span>Explore Projects</span>
-            <svg class="w-4 h-4 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </a>
+        <!-- Action CTAs & Highlights (Separated rows to prevent any text collisions) -->
+        <div class="space-y-5 pt-2 w-full">
+          <div class="reveal-init reveal-up delay-200 flex flex-wrap gap-4 items-center">
+            <!-- Primary CTA: Explore Projects -->
+            <a href="#projects" class="pop-hover inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-nebula-muted to-nebula hover:from-nebula hover:to-[#8c6eff] shadow-lg shadow-nebula/20 transition-all duration-300">
+              <span>Explore Projects</span>
+              <svg class="w-4 h-4 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
 
-          <!-- Secondary CTA: Contact Me -->
-          <a href="#contact" class="pop-hover inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium text-sm text-starlight glass-panel hover:border-nebula/50 hover:bg-obsidian/90 transition-all duration-300">
-            <span>Contact Me</span>
-            <svg class="w-4 h-4 text-dusty-cyan pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-          </a>
+            <!-- Secondary CTA: Contact Me -->
+            <a href="#contact" class="pop-hover inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium text-sm text-starlight glass-panel hover:border-nebula/50 hover:bg-obsidian/90 transition-all duration-300">
+              <span>Contact Me</span>
+              <svg class="w-4 h-4 text-dusty-cyan pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
 
-          <!-- Quick Proof Highlights -->
-          <div class="w-full sm:w-auto mt-2 sm:mt-0 flex items-center space-x-5 sm:ml-2 pt-3 sm:pt-0 border-t sm:border-t-0 border-white/[0.08] text-xs font-mono text-cosmic-grey">
-            <div class="pop-hover p-1 rounded"><span class="text-starlight font-bold text-sm">9.5/10</span> HITS CGPA</div>
-            <div class="pop-hover p-1 rounded"><span class="text-starlight font-bold text-sm">8.0/10</span> IITM CGPA</div>
-            <div class="pop-hover p-1 rounded"><span class="text-starlight font-bold text-sm">2+</span> Internships</div>
+          <!-- Quick Proof Highlights in Dedicated Flexible Row -->
+          <div class="reveal-init reveal-up delay-300 flex flex-wrap gap-2.5 sm:gap-4 pt-1 text-xs font-mono text-cosmic-grey">
+            <div class="pop-hover flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08]">
+              <span class="text-starlight font-bold text-sm">9.5/10</span>
+              <span>HITS CGPA</span>
+            </div>
+            <div class="pop-hover flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08]">
+              <span class="text-starlight font-bold text-sm">8.0/10</span>
+              <span>IITM CGPA</span>
+            </div>
+            <div class="pop-hover flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08]">
+              <span class="text-starlight font-bold text-sm">2+</span>
+              <span>Internships</span>
+            </div>
           </div>
         </div>
 
@@ -275,7 +288,7 @@
           </div>
 
           <!-- Card Actions with Spring Pop -->
-          <div class="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+          <div class="mt-6 pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
             <button class="open-case-study pop-hover inline-flex items-center space-x-1.5 text-xs font-medium text-nebula hover:text-white transition-colors" data-project="predictive-maintenance">
               <span>View Case Study</span>
               <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -331,7 +344,7 @@
           </div>
 
           <!-- Card Actions with Spring Pop -->
-          <div class="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+          <div class="mt-6 pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
             <button class="open-case-study pop-hover inline-flex items-center space-x-1.5 text-xs font-medium text-nebula hover:text-white transition-colors" data-project="smart-plant-iot">
               <span>View Case Study</span>
               <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -384,7 +397,7 @@
           </div>
 
           <!-- Card Actions with Spring Pop -->
-          <div class="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+          <div class="mt-6 pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
             <button class="open-case-study pop-hover inline-flex items-center space-x-1.5 text-xs font-medium text-nebula hover:text-white transition-colors" data-project="first-aid-voice">
               <span>View Case Study</span>
               <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -416,16 +429,16 @@
         
         <!-- Bio Narrative (Slide in from Left with Exact Resume Text) -->
         <div class="reveal-init reveal-left lg:col-span-7 space-y-5 text-cosmic-grey leading-relaxed text-base">
-          <div class="p-6 rounded-2xl glass-panel border border-white/[0.08] space-y-4">
-            <h3 class="font-heading font-semibold text-xl text-starlight">About Me</h3>
-            <p class="text-starlight/95 text-base sm:text-lg leading-relaxed font-normal">
-              I've always been the kind of person who asks <em>"but what if we could just build it?"</em> — whether that's a smarter way to water plants or a system that talks someone through a medical emergency when their hands are full. That curiosity led me to take on two degrees at once: a B.Tech in Computer Science &amp; Engineering at <span class="text-starlight font-medium">Hindustan Institute of Technology and Science</span> (CGPA 9.5) while simultaneously completing the highly competitive Data Science &amp; Applications program at <span class="text-starlight font-medium">IIT Madras</span> (CGPA 8.0). It's been demanding, occasionally sleepless, and absolutely worth it.
+          <div class="p-6 sm:p-8 rounded-2xl glass-panel border border-white/[0.08] space-y-4">
+            <h3 class="font-heading font-semibold text-xl text-starlight">Professional Narrative</h3>
+            <p class="text-starlight/90 text-base sm:text-lg leading-relaxed font-normal">
+              I am an undergraduate Computer Science and Data Science scholar with a strong commitment to academic rigor and engineering excellence. Currently, I am concurrently pursuing a Bachelor of Technology in Computer Science &amp; Engineering at <span class="text-starlight font-medium">Hindustan Institute of Technology and Science</span> (CGPA: 9.5) alongside the specialized Degree Program in Data Science and Applications at <span class="text-starlight font-medium">IIT Madras</span> (CGPA: 8.0). This dual-institution academic pathway provides me with both deep theoretical foundations in data structures, algorithms, and applied mathematics, as well as practical software development capabilities.
             </p>
             <p class="text-cosmic-grey text-sm sm:text-base leading-relaxed">
-              What excites me most is living at the crossroads of software and hardware — where an algorithm meets a sensor, and a dataset actually changes something in the physical world. My projects aren't just portfolio pieces; they're things I built because real people needed them. A voice-activated first-aid assistant, because you can't scroll a screen while giving CPR. A smart irrigation system, because a farmer or home gardener shouldn't have to guess when their plants are thirsty. AI, Machine Learning, IoT, embedded systems — these aren't just buzzwords on my resume. They're the tools I reach for when I want to solve something that matters.
+              My engineering approach centers on bridging intelligent software architectures with physical hardware systems. Rather than viewing artificial intelligence, cloud architectures, and IoT in isolation, I focus on synthesizing them into integrated, end-to-end solutions. This focus is demonstrated through projects such as an AI-driven, voice-activated medical assistant designed for hands-free emergency triage, an autonomous multi-sensor IoT agricultural irrigation system, and cloud-deployed predictive maintenance frameworks.
             </p>
             <p class="text-cosmic-grey text-sm sm:text-base leading-relaxed">
-              Outside of code, I'm someone who genuinely enjoys working with people — collaborating across teams, adapting to different environments, and communicating ideas clearly in English, Tamil, and Hindi. I believe the best technology is the kind that quietly makes someone's day easier. That's the bar I'm always trying to reach.
+              Complementing my technical proficiencies is a structured problem-solving discipline, professional adaptability, and clear cross-functional communication in English, Tamil, and Hindi. With prior internship experience across applied AI pipelines and cloud computing environments, I strive to engineer resilient, high-integrity software solutions that address tangible real-world problems.
             </p>
           </div>
 
@@ -598,7 +611,7 @@
 
           <div class="space-y-4 flex-1">
             <!-- Education 1: HITS -->
-            <div class="timeline-node tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
+            <div class="tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex flex-wrap items-baseline justify-between gap-1">
                   <span class="text-[11px] font-mono text-dusty-cyan px-2 py-0.5 rounded bg-dusty-cyan/10 border border-dusty-cyan/20">Undergraduate</span>
@@ -615,7 +628,7 @@
             </div>
 
             <!-- Education 2: IIT Madras -->
-            <div class="timeline-node tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
+            <div class="tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex flex-wrap items-baseline justify-between gap-1">
                   <span class="text-[11px] font-mono text-nebula px-2 py-0.5 rounded bg-nebula/10 border border-nebula/20">Concurrent Degree</span>
@@ -647,7 +660,7 @@
 
           <div class="space-y-4 flex-1">
             <!-- Internship 1: Edunet / AICTE -->
-            <div class="timeline-node tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
+            <div class="tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex flex-wrap items-baseline justify-between gap-1">
                   <span class="text-[11px] font-mono text-nebula px-2 py-0.5 rounded bg-nebula/10 border border-nebula/20">AI & Cloud Intern</span>
@@ -663,7 +676,7 @@
             </div>
 
             <!-- Internship 2: Coincent -->
-            <div class="timeline-node tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
+            <div class="tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex flex-wrap items-baseline justify-between gap-1">
                   <span class="text-[11px] font-mono text-dusty-cyan px-2 py-0.5 rounded bg-dusty-cyan/10 border border-dusty-cyan/20">AI Intern</span>
@@ -693,7 +706,7 @@
 
           <div class="space-y-4 flex-1">
             <!-- Certificate 1: MongoDB -->
-            <div class="timeline-node tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
+            <div class="tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex flex-wrap items-baseline justify-between gap-1">
                   <span class="text-[11px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-emerald-400/10 border border-emerald-400/20">NoSQL</span>
@@ -708,7 +721,7 @@
             </div>
 
             <!-- Certificate 2: IBM SkillsBuild -->
-            <div class="timeline-node tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
+            <div class="tilt-card p-5 rounded-2xl space-y-2 h-full flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex flex-wrap items-baseline justify-between gap-1">
                   <span class="text-[11px] font-mono text-dusty-cyan px-2 py-0.5 rounded bg-dusty-cyan/10 border border-dusty-cyan/20">IBM SkillsBuild</span>
