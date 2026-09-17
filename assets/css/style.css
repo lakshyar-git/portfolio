@@ -12,8 +12,8 @@
 :root {
   --color-void: #090A0F;
   --color-obsidian: #12151E;
-  --color-starlight: #F0F4F8;
-  --color-cosmic-grey: #8C96A6;
+  --color-starlight: #F1F5F9;
+  --color-cosmic-grey: #94A3B8;
   --color-nebula: #7C5CFC;
   --color-dusty-cyan: #3B82F6;
   --border-translucent: rgba(255, 255, 255, 0.08);
@@ -30,11 +30,14 @@ html {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
 }
 
-/* Heading font */
+/* Heading font - Modern, geometric, comfortable to the eye */
 h1, h2, h3, h4, .font-heading {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.022em;
 }
 
 /* --------------------------------------------------------------------------
@@ -293,10 +296,10 @@ button:hover .pop-icon {
   height: 100vh;
   z-index: 1;
   background: radial-gradient(
-    650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-    rgba(124, 92, 252, 0.1),
-    rgba(59, 130, 246, 0.04) 40%,
-    transparent 70%
+    600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+    rgba(124, 92, 252, 0.16),
+    rgba(56, 189, 248, 0.08) 35%,
+    transparent 65%
   );
   transition: opacity 0.4s ease;
   will-change: background;
@@ -391,12 +394,12 @@ button:hover .pop-icon {
 }
 
 /* --------------------------------------------------------------------------
-   Typography Alignment Utilities
+   Typography Alignment Utilities (Optimized for Visual Comfort & Natural Flow)
    -------------------------------------------------------------------------- */
 .text-justify {
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
+  text-align: left;
+  line-height: 1.68;
+  hyphens: none;
 }
 
 /* Accessibility: Reduced motion query */
@@ -415,7 +418,7 @@ button:hover .pop-icon {
   .pop-hover:hover, .pop-icon:hover, .skill-chip:hover {
     transform: none !important;
   }
-  #cursor-glow {
+  #cursor-glow, #ripple-canvas {
     display: none !important;
   }
 }

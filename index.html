@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lakshya R · Computer Science & Data Science Scholar | Software & Systems Developer</title>
+  <title>Lakshya R · Computer Science & Data Science Undergraduate | Software & Systems Developer</title>
   <meta name="description" content="Portfolio of Lakshya R - Undergraduate student pursuing Computer Science at Hindustan Institute of Technology and Science and Data Science at IIT Madras. Specializing in software development, IoT systems, and data-driven engineering." />
 
-  <!-- Google Fonts: Space Grotesk & Inter -->
+  <!-- Google Fonts: Plus Jakarta Sans & Inter (Comfortable, Modern & High-Legibility) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,16 +21,16 @@
           colors: {
             void: '#090A0F',
             obsidian: '#12151E',
-            starlight: '#F0F4F8',
-            'cosmic-grey': '#8C96A6',
+            starlight: '#F1F5F9',
+            'cosmic-grey': '#94A3B8',
             nebula: '#7C5CFC',
             'nebula-muted': '#6546d8',
             'dusty-cyan': '#3B82F6',
             'dusty-cyan-muted': '#2563eb',
           },
           fontFamily: {
-            heading: ['Space Grotesk', 'sans-serif'],
-            sans: ['Inter', 'sans-serif'],
+            heading: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            sans: ['Inter', '"Plus Jakarta Sans"', '-apple-system', 'sans-serif'],
           }
         }
       }
@@ -50,6 +50,9 @@
 
   <!-- Ambient Reactive Canvas Starfield (Warp Drift on Scroll & Mouse Parallax) -->
   <canvas id="cosmic-canvas" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></canvas>
+
+  <!-- Interactive Cosmic Water Ripple & Stardust Trail Canvas (High Visibility) -->
+  <canvas id="ripple-canvas" class="fixed inset-0 pointer-events-none z-20" aria-hidden="true"></canvas>
 
   <!-- Ambient Cosmic Gradient Blobs -->
   <div class="cosmic-nebula-glow w-[550px] h-[550px] bg-nebula/15 top-[-100px] left-1/2 -translate-x-1/2" aria-hidden="true"></div>
@@ -75,8 +78,8 @@
 
       <!-- Desktop Navigation Links with Pop Hover -->
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-        <a href="#projects" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Projects</a>
         <a href="#about" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">About</a>
+        <a href="#projects" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Projects</a>
         <a href="#skills" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Skills</a>
         <a href="#education" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Education</a>
         <a href="#internships" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Internships</a>
@@ -106,8 +109,8 @@
     <!-- Mobile Drawer Navigation -->
     <div id="mobile-menu" class="hidden md:hidden px-4 pt-3 pb-5 border-b border-white/[0.08] bg-obsidian/95 backdrop-blur-xl">
       <nav class="flex flex-col space-y-3 text-sm">
-        <a href="#projects" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Featured Projects</a>
         <a href="#about" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">About Me</a>
+        <a href="#projects" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Featured Projects</a>
         <a href="#skills" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Skills</a>
         <a href="#education" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Education</a>
         <a href="#internships" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Internships</a>
@@ -132,14 +135,6 @@
       
       <!-- Text & Intro Column (Left) -->
       <div class="w-full lg:w-3/5 space-y-6 flex flex-col items-start">
-        
-        <!-- Academic Distinction Badge with Subtle Pop -->
-        <div class="reveal-init reveal-down inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium glass-panel-subtle text-cosmic-grey border border-white/[0.08] pop-hover max-w-full">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-          <span class="text-starlight font-medium">B.Tech CSE @ HITS (CGPA: 9.5)</span>
-          <span class="text-white/20 hidden sm:inline">·</span>
-          <span class="text-starlight font-medium">Data Science @ IIT Madras (CGPA: 8.0)</span>
-        </div>
 
         <!-- Headline & Name -->
         <div class="reveal-init reveal-up space-y-3">
@@ -151,9 +146,9 @@
             <span class="bg-gradient-to-r from-starlight via-dusty-cyan to-nebula bg-clip-text text-transparent">Lakshya R</span>
           </h1>
           <h2 class="text-lg sm:text-xl font-heading font-medium text-starlight/90">
-            Computer Science & Data Science Scholar <span class="text-nebula">|</span> Software & Systems Developer
+            Computer Science & Data Science Undergraduate <span class="text-nebula">|</span> Software & Systems Developer
           </h2>
-          <p class="text-base sm:text-lg text-cosmic-grey leading-relaxed font-normal pt-1 text-justify">
+          <p class="text-base sm:text-lg text-cosmic-grey leading-relaxed font-normal pt-1">
             Undergraduate student concurrently pursuing Computer Science & Engineering alongside Data Science, passionate about building reliable software, embedded systems, and data-driven solutions.
           </p>
         </div>
@@ -218,7 +213,79 @@
     </section>
 
     <!-- =========================================================================
-         3. FEATURED PROJECTS SECTION (Directional Revelations & 3D Tilt Cards)
+         3. ABOUT ME SECTION (Exact Resume Bio & Philosophical Pillars)
+         ========================================================================= -->
+    <section id="about" class="space-y-10">
+      <div class="reveal-init reveal-up pb-2 border-b border-white/[0.08]">
+        <div class="flex items-center space-x-2 text-xs font-mono text-nebula tracking-wider uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-nebula"></span>
+          <span>Background & Vision</span>
+        </div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-starlight mt-2">About Me</h2>
+        <p class="text-sm sm:text-base text-cosmic-grey mt-1">Academics, problem-solving mindset, and passion for computing.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Bio Narrative (Slide in from Left with Exact Resume Text) -->
+        <div class="reveal-init reveal-left lg:col-span-7 space-y-5 text-cosmic-grey leading-relaxed text-base">
+          <div class="p-6 sm:p-8 rounded-2xl glass-panel border border-white/[0.08] space-y-3">
+            <h3 class="font-heading font-semibold text-xl text-starlight">About Me</h3>
+            <p class="text-starlight/85 text-sm sm:text-[15px] leading-relaxed font-normal">
+              I am an undergraduate Computer Science and Data Science student concurrently pursuing a B.Tech in CSE at <span class="text-starlight font-medium">Hindustan Institute of Technology and Science</span> (CGPA: 9.5) alongside a degree in Data Science &amp; Applications at <span class="text-starlight font-medium">IIT Madras</span> (CGPA: 8.0). Focused on the intersection of intelligent software and physical hardware, I build reliable, data-driven systems spanning applied AI, cloud architectures, and IoT.
+            </p>
+          </div>
+
+          <!-- Quick facts tag list with Pop -->
+          <div class="pt-2 flex flex-wrap gap-2 text-xs font-mono text-cosmic-grey">
+            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">🎓 Dual Degree Undergraduate</span>
+            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">⚡ AI & Cloud Intern (Edunet / AICTE)</span>
+            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">🌱 IoT & Embedded Solutions</span>
+          </div>
+        </div>
+
+        <!-- Pillars / Approach Cards (Slide in from Right with 3D Tilt) -->
+        <div class="reveal-init reveal-right delay-100 lg:col-span-5 space-y-4">
+          
+          <!-- Pillar 1 -->
+          <div class="tilt-card rounded-xl p-5">
+            <div class="flex items-center space-x-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-nebula/15 border border-nebula/30 flex items-center justify-center text-nebula font-heading font-bold text-sm pop-icon">01</div>
+              <h3 class="font-heading font-semibold text-base text-starlight">Data-Driven Intelligence</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+              Applying machine learning models and statistical rigor from IIT Madras to predict failures and uncover actionable patterns.
+            </p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="tilt-card rounded-xl p-5">
+            <div class="flex items-center space-x-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-dusty-cyan/15 border border-dusty-cyan/30 flex items-center justify-center text-dusty-cyan font-heading font-bold text-sm pop-icon">02</div>
+              <h3 class="font-heading font-semibold text-base text-starlight">Hardware & IoT Synergy</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+              Interfacing physical sensors, microcontrollers, and cloud telemetry to build closed-loop autonomous environments.
+            </p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="tilt-card rounded-xl p-5">
+            <div class="flex items-center space-x-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-starlight font-heading font-bold text-sm pop-icon">03</div>
+              <h3 class="font-heading font-semibold text-base text-starlight">Cloud & Scalable Deployment</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+              Packaging AI services on cloud infrastructure (IBM Cloud) for reliable, low-latency, and accessible usage.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. FEATURED PROJECTS SECTION (Directional Revelations & 3D Tilt Cards)
          ========================================================================= -->
     <section id="projects" class="space-y-10">
       
@@ -297,7 +364,7 @@
               <span>View Case Study</span>
               <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </button>
-            <a href="https://github.com/lakshyar-git" target="_blank" rel="noopener noreferrer" class="pop-hover inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08] hover:border-nebula/50 text-xs font-mono text-cosmic-grey hover:text-starlight transition-all" aria-label="View on GitHub">
+            <a href="https://github.com/lakshyar-git/Predictive-Maintenance-of-Industrial-Machinery" target="_blank" rel="noopener noreferrer" class="pop-hover inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08] hover:border-nebula/50 text-xs font-mono text-cosmic-grey hover:text-starlight transition-all" aria-label="View on GitHub">
               <svg class="w-3.5 h-3.5 pop-icon" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
               <span>GitHub</span>
             </a>
@@ -353,7 +420,7 @@
               <span>View Case Study</span>
               <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </button>
-            <a href="https://github.com/lakshyar-git" target="_blank" rel="noopener noreferrer" class="pop-hover inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08] hover:border-nebula/50 text-xs font-mono text-cosmic-grey hover:text-starlight transition-all" aria-label="View on GitHub">
+            <a href="https://github.com/lakshyar-git/IoT-Based-Smart-Plant-Maintenance-Watering-System" target="_blank" rel="noopener noreferrer" class="pop-hover inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08] hover:border-nebula/50 text-xs font-mono text-cosmic-grey hover:text-starlight transition-all" aria-label="View on GitHub">
               <svg class="w-3.5 h-3.5 pop-icon" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
               <span>GitHub</span>
             </a>
@@ -406,85 +473,13 @@
               <span>View Case Study</span>
               <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </button>
-            <a href="https://github.com/lakshyar-git" target="_blank" rel="noopener noreferrer" class="pop-hover inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08] hover:border-nebula/50 text-xs font-mono text-cosmic-grey hover:text-starlight transition-all" aria-label="View on GitHub">
+            <a href="https://github.com/lakshyar-git/AI-VOICE-BASED-FIRST-AID-ASSISTANT" target="_blank" rel="noopener noreferrer" class="pop-hover inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-obsidian border border-white/[0.08] hover:border-nebula/50 text-xs font-mono text-cosmic-grey hover:text-starlight transition-all" aria-label="View on GitHub">
               <svg class="w-3.5 h-3.5 pop-icon" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
               <span>GitHub</span>
             </a>
           </div>
         </article>
 
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         4. ABOUT ME SECTION (Exact Resume Bio & Philosophical Pillars)
-         ========================================================================= -->
-    <section id="about" class="space-y-10">
-      <div class="reveal-init reveal-up pb-2 border-b border-white/[0.08]">
-        <div class="flex items-center space-x-2 text-xs font-mono text-nebula tracking-wider uppercase">
-          <span class="w-1.5 h-1.5 rounded-full bg-nebula"></span>
-          <span>Background & Vision</span>
-        </div>
-        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-starlight mt-2">About Me</h2>
-        <p class="text-sm sm:text-base text-cosmic-grey mt-1">Academics, problem-solving mindset, and passion for computing.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        <!-- Bio Narrative (Slide in from Left with Exact Resume Text) -->
-        <div class="reveal-init reveal-left lg:col-span-7 space-y-5 text-cosmic-grey leading-relaxed text-base">
-          <div class="p-6 sm:p-8 rounded-2xl glass-panel border border-white/[0.08] space-y-3">
-            <h3 class="font-heading font-semibold text-xl text-starlight">About Me</h3>
-            <p class="text-starlight/90 text-base sm:text-lg leading-relaxed font-normal text-justify">
-              I am an undergraduate Computer Science and Data Science student concurrently pursuing a B.Tech in CSE at <span class="text-starlight font-medium">Hindustan Institute of Technology and Science</span> (CGPA: 9.5) alongside a degree in Data Science &amp; Applications at <span class="text-starlight font-medium">IIT Madras</span> (CGPA: 8.0). Focused on the intersection of intelligent software and physical hardware, I build reliable, data-driven systems spanning applied AI, cloud architectures, and IoT.
-            </p>
-          </div>
-
-          <!-- Quick facts tag list with Pop -->
-          <div class="pt-2 flex flex-wrap gap-2 text-xs font-mono text-cosmic-grey">
-            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">🎓 Dual Degree Scholar</span>
-            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">⚡ AI & Cloud Intern (Edunet / AICTE)</span>
-            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">🌱 IoT & Embedded Solutions</span>
-          </div>
-        </div>
-
-        <!-- Pillars / Approach Cards (Slide in from Right with 3D Tilt) -->
-        <div class="reveal-init reveal-right delay-100 lg:col-span-5 space-y-4">
-          
-          <!-- Pillar 1 -->
-          <div class="tilt-card rounded-xl p-5">
-            <div class="flex items-center space-x-3 mb-2">
-              <div class="w-8 h-8 rounded-lg bg-nebula/15 border border-nebula/30 flex items-center justify-center text-nebula font-heading font-bold text-sm pop-icon">01</div>
-              <h3 class="font-heading font-semibold text-base text-starlight">Data-Driven Intelligence</h3>
-            </div>
-            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed text-justify">
-              Applying machine learning models and statistical rigor from IIT Madras to predict failures and uncover actionable patterns.
-            </p>
-          </div>
-
-          <!-- Pillar 2 -->
-          <div class="tilt-card rounded-xl p-5">
-            <div class="flex items-center space-x-3 mb-2">
-              <div class="w-8 h-8 rounded-lg bg-dusty-cyan/15 border border-dusty-cyan/30 flex items-center justify-center text-dusty-cyan font-heading font-bold text-sm pop-icon">02</div>
-              <h3 class="font-heading font-semibold text-base text-starlight">Hardware & IoT Synergy</h3>
-            </div>
-            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed text-justify">
-              Interfacing physical sensors, microcontrollers, and cloud telemetry to build closed-loop autonomous environments.
-            </p>
-          </div>
-
-          <!-- Pillar 3 -->
-          <div class="tilt-card rounded-xl p-5">
-            <div class="flex items-center space-x-3 mb-2">
-              <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-starlight font-heading font-bold text-sm pop-icon">03</div>
-              <h3 class="font-heading font-semibold text-base text-starlight">Cloud & Scalable Deployment</h3>
-            </div>
-            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed text-justify">
-              Packaging AI services on cloud infrastructure (IBM Cloud) for reliable, low-latency, and accessible usage.
-            </p>
-          </div>
-
-        </div>
       </div>
     </section>
 
@@ -942,7 +937,7 @@
               <h3 class="font-heading font-semibold text-lg text-starlight">Curriculum Vitae</h3>
               <p class="text-xs text-cosmic-grey mt-1 text-justify">Official resume featuring B.Tech CSE (9.5 CGPA), IIT Madras Data Science (CGPA: 8), and internship credentials.</p>
             </div>
-            <a href="#" onclick="alert('Resume PDF: Place your resume file as resume.pdf in this folder to enable download!'); return false;" class="pop-hover w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-obsidian border border-white/10 hover:border-nebula/50 text-starlight hover:bg-obsidian/80 transition-all">
+            <a href="resume.pdf" download target="_blank" class="pop-hover w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-obsidian border border-white/10 hover:border-nebula/50 text-starlight hover:bg-obsidian/80 transition-all">
               <svg class="w-3.5 h-3.5 text-dusty-cyan pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
               </svg>

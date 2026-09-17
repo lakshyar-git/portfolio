@@ -22,7 +22,7 @@ A dynamic, eye-catching, and modern portfolio for **Lakshya R** (Computer Scienc
 
 1. **Hero Section**:
    - **Name**: Lakshya R
-   - **Title**: Computer Science & Data Science Scholar | Software & Systems Developer
+   - **Title**: Computer Science & Data Science Undergraduate | Software & Systems Developer
    - **Tagline**: Undergraduate student concurrently pursuing Computer Science & Engineering alongside Data Science, passionate about building reliable software, embedded systems, and data-driven solutions.
    - **Academic Badge**: Dual-degree credentials (HITS 9.5 CGPA & IIT Madras 8.0 CGPA).
    - **CTAs**: Primary button `Explore Projects` (`#projects`) & secondary button `Contact Me` (`#contact`).
