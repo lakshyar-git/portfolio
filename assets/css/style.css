@@ -390,6 +390,15 @@ button:hover .pop-icon {
   opacity: 1;
 }
 
+/* --------------------------------------------------------------------------
+   Typography Alignment Utilities
+   -------------------------------------------------------------------------- */
+.text-justify {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
 /* Accessibility: Reduced motion query */
 @media (prefers-reduced-motion: reduce) {
   html {
