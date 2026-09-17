@@ -1,0 +1,424 @@
+/* ==========================================================================
+   Cosmic Portfolio - Dynamic Interactions & Visual Effects System
+   Aesthetic Tokens:
+   - Deep Void Black: #090A0F
+   - Deep Obsidian: #12151E
+   - Crisp Starlight White: #F0F4F8
+   - Muted Cosmic Grey: #8C96A6
+   - Soft Nebula Violet: #7C5CFC
+   - Dusty Deep Cyan: #3B82F6
+   ========================================================================== */
+
+:root {
+  --color-void: #090A0F;
+  --color-obsidian: #12151E;
+  --color-starlight: #F0F4F8;
+  --color-cosmic-grey: #8C96A6;
+  --color-nebula: #7C5CFC;
+  --color-dusty-cyan: #3B82F6;
+  --border-translucent: rgba(255, 255, 255, 0.08);
+  --border-translucent-hover: rgba(124, 92, 252, 0.45);
+  --glass-bg: rgba(18, 21, 30, 0.72);
+  --glass-bg-subtle: rgba(18, 21, 30, 0.45);
+}
+
+/* Base resets & smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-void);
+  color: var(--color-starlight);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Heading font */
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   Top Scroll Progress Indicator
+   -------------------------------------------------------------------------- */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #7C5CFC 0%, #3B82F6 50%, #7C5CFC 100%);
+  z-index: 100;
+  box-shadow: 0 0 12px rgba(124, 92, 252, 0.7);
+  transition: width 0.08s ease-out;
+  pointer-events: none;
+}
+
+/* Custom Cosmic Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c2233;
+  border-radius: 9999px;
+  border: 2px solid var(--color-void);
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7C5CFC;
+  box-shadow: 0 0 10px rgba(124, 92, 252, 0.6);
+}
+
+/* Selection highlight */
+::selection {
+  background: rgba(124, 92, 252, 0.35);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Directional Scroll Reveals (Transitions on Scroll Up/Down/Left/Right)
+   -------------------------------------------------------------------------- */
+.reveal-init {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up {
+  transform: translateY(45px);
+}
+
+.reveal-down {
+  transform: translateY(-45px);
+}
+
+.reveal-left {
+  transform: translateX(-50px);
+}
+
+.reveal-right {
+  transform: translateX(50px);
+}
+
+.reveal-scale {
+  transform: scale(0.92);
+}
+
+.reveal-init.is-revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+/* Stagger delay utility classes */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* --------------------------------------------------------------------------
+   Glassmorphism Foundations
+   -------------------------------------------------------------------------- */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-translucent);
+}
+
+.glass-panel-subtle {
+  background: var(--glass-bg-subtle);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-translucent);
+}
+
+/* --------------------------------------------------------------------------
+   3D Tilt Card & Interactive Spotlight
+   -------------------------------------------------------------------------- */
+.tilt-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-translucent);
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease-out, 
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+  overflow: hidden;
+}
+
+.tilt-card:hover {
+  border-color: var(--border-translucent-hover);
+  box-shadow: 0 20px 40px -15px rgba(124, 92, 252, 0.22),
+              0 0 30px 2px rgba(59, 130, 246, 0.08);
+}
+
+/* Dynamic Spotlight Sheen following mouse on cards */
+.spotlight-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    450px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
+    rgba(124, 92, 252, 0.18),
+    rgba(59, 130, 246, 0.06) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+.tilt-card:hover .spotlight-overlay {
+  opacity: 1;
+}
+
+/* Top border gloss line */
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.tilt-card:hover::before {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Pop Micro-Interactions (Icons, Tabs, Pills, Buttons)
+   -------------------------------------------------------------------------- */
+/* Spring Pop on Hover */
+.pop-hover {
+  transition: transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.26s ease,
+              border-color 0.26s ease,
+              background-color 0.26s ease,
+              color 0.2s ease;
+  will-change: transform;
+}
+
+.pop-hover:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 24px -4px rgba(124, 92, 252, 0.32);
+}
+
+.pop-hover:active {
+  transform: scale(0.96);
+}
+
+/* Interactive Pop for Icons */
+.pop-icon {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.25s ease,
+              color 0.25s ease;
+  will-change: transform;
+}
+
+/* Icon pops when its container is hovered or when directly hovered */
+*:hover > .pop-icon,
+.pop-icon:hover,
+a:hover .pop-icon,
+button:hover .pop-icon {
+  transform: scale(1.22) rotate(-8deg);
+  filter: drop-shadow(0 0 10px rgba(124, 92, 252, 0.7));
+  color: #F0F4F8 !important;
+}
+
+/* Interactive Skill Chips / Badges with Spring Pop */
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  will-change: transform;
+}
+
+.skill-chip:hover {
+  transform: translateY(-3px) scale(1.1);
+  background: rgba(124, 92, 252, 0.22) !important;
+  border-color: rgba(124, 92, 252, 0.55) !important;
+  color: #F0F4F8 !important;
+  box-shadow: 0 4px 18px rgba(124, 92, 252, 0.35);
+}
+
+.skill-chip:active {
+  transform: scale(0.94);
+}
+
+/* Tab Pills Pop & Glow */
+.tab-pop {
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tab-pop:hover:not(.active) {
+  transform: translateY(-2px) scale(1.04);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #F0F4F8;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.tab-pop.active {
+  transform: scale(1.03);
+  box-shadow: 0 0 18px rgba(124, 92, 252, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   Cursor Glow Effect
+   -------------------------------------------------------------------------- */
+#cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: radial-gradient(
+    650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+    rgba(124, 92, 252, 0.1),
+    rgba(59, 130, 246, 0.04) 40%,
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
+  will-change: background;
+}
+
+@media (hover: none) or (pointer: coarse) {
+  #cursor-glow {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Subtle Cosmic Glow Gradients
+   -------------------------------------------------------------------------- */
+.cosmic-nebula-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.28;
+  z-index: 0;
+  will-change: transform, opacity;
+  transition: transform 0.8s ease-out;
+}
+
+/* --------------------------------------------------------------------------
+   Timeline Orbit Nodes with Radiant Pulse
+   -------------------------------------------------------------------------- */
+.timeline-node {
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.timeline-node:hover {
+  transform: translateX(4px);
+}
+
+.timeline-node::after {
+  content: '';
+  position: absolute;
+  left: -29px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #12151E;
+  border: 2px solid #7C5CFC;
+  box-shadow: 0 0 12px rgba(124, 92, 252, 0.5);
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.timeline-node:hover::after {
+  transform: scale(1.4);
+  background: #7C5CFC;
+  box-shadow: 0 0 20px rgba(124, 92, 252, 0.85);
+  border-color: #F0F4F8;
+}
+
+@media (max-width: 768px) {
+  .timeline-node::after {
+    left: -21px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Form States & Inputs
+   -------------------------------------------------------------------------- */
+.input-cosmic {
+  background: rgba(18, 21, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #F0F4F8;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.input-cosmic:focus {
+  outline: none;
+  border-color: rgba(124, 92, 252, 0.7);
+  box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.2), 0 0 20px rgba(124, 92, 252, 0.15);
+  background: rgba(18, 21, 30, 0.88);
+  transform: translateY(-1px);
+}
+
+.input-cosmic::placeholder {
+  color: #555e70;
+}
+
+/* --------------------------------------------------------------------------
+   Toast / Notification
+   -------------------------------------------------------------------------- */
+.toast-notice {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  transform: translateY(120%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  opacity: 0;
+}
+
+.toast-notice.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Accessibility: Reduced motion query */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .tilt-card, .tilt-card:hover {
+    transform: none !important;
+  }
+  .pop-hover:hover, .pop-icon:hover, .skill-chip:hover {
+    transform: none !important;
+  }
+  #cursor-glow {
+    display: none !important;
+  }
+}

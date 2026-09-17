@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lakshya R · Computer Science & Data Science Student | Tech & AI Enthusiast</title>
+  <meta name="description" content="Portfolio of Lakshya R - Final-year Computer Science student at Hindustan Institute of Technology and Science and IIT Madras. Specializing in AI, cloud architectures, IoT, and embedded systems." />
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            void: '#090A0F',
+            obsidian: '#12151E',
+            starlight: '#F0F4F8',
+            'cosmic-grey': '#8C96A6',
+            nebula: '#7C5CFC',
+            'nebula-muted': '#6546d8',
+            'dusty-cyan': '#3B82F6',
+            'dusty-cyan-muted': '#2563eb',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Design System, Glassmorphism, 3D Tilt & Micro-Interactions -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-void text-starlight antialiased selection:bg-nebula/30 selection:text-white relative min-h-screen overflow-x-hidden">
+
+  <!-- Top Dynamic Scroll Progress Indicator -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient Interactive Cursor Glow (Desktop Pointer Only) -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Ambient Reactive Canvas Starfield (Warp Drift on Scroll & Mouse Parallax) -->
+  <canvas id="cosmic-canvas" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></canvas>
+
+  <!-- Ambient Cosmic Gradient Blobs -->
+  <div class="cosmic-nebula-glow w-[550px] h-[550px] bg-nebula/15 top-[-100px] left-1/2 -translate-x-1/2" aria-hidden="true"></div>
+  <div class="cosmic-nebula-glow w-[450px] h-[450px] bg-dusty-cyan/10 top-[40%] right-[-100px]" aria-hidden="true"></div>
+  <div class="cosmic-nebula-glow w-[500px] h-[500px] bg-nebula/10 bottom-[10%] left-[-150px]" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       1. NAVIGATION BAR
+       ========================================================================= -->
+  <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-void/70 border-b border-white/[0.08] transition-all duration-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo with Pop Effect -->
+      <a href="#hero" class="flex items-center space-x-3 group pop-hover">
+        <div class="w-9 h-9 rounded-xl bg-obsidian border border-white/[0.08] flex items-center justify-center group-hover:border-nebula/50 transition-colors shadow-inner overflow-hidden">
+          <img src="assets/images/lakshya.jpg" alt="LR" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-heading font-semibold text-sm tracking-wide text-starlight group-hover:text-white transition-colors">Lakshya R</span>
+          <span class="hidden sm:inline-block text-[11px] text-cosmic-grey ml-2 font-mono">/ portfolio</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links with Pop Hover -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="#projects" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Projects</a>
+        <a href="#about" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">About</a>
+        <a href="#skills" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Skills</a>
+        <a href="#timeline" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Timeline</a>
+        <a href="#contact" class="desktop-nav-link text-cosmic-grey hover:text-starlight transition-all pop-hover">Contact</a>
+      </nav>
+
+      <!-- Action Button & Mobile Toggle -->
+      <div class="flex items-center space-x-3">
+        <!-- Quick Resume CTA with Spring Pop -->
+        <a href="#contact" class="hidden sm:inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-medium bg-obsidian border border-white/[0.08] hover:border-nebula/50 text-starlight hover:bg-obsidian/80 transition-all pop-hover">
+          <svg class="w-3.5 h-3.5 text-dusty-cyan pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <span>Resume</span>
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-cosmic-grey hover:text-starlight hover:bg-obsidian/60 border border-transparent hover:border-white/[0.08] transition-colors pop-hover" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="w-5 h-5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-3 pb-5 border-b border-white/[0.08] bg-obsidian/95 backdrop-blur-xl">
+      <nav class="flex flex-col space-y-3 text-sm">
+        <a href="#projects" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Featured Projects</a>
+        <a href="#about" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">About Me</a>
+        <a href="#skills" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Skills & Capabilities</a>
+        <a href="#timeline" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Education & Experience</a>
+        <a href="#contact" class="mobile-nav-link text-cosmic-grey hover:text-starlight py-1">Contact Details</a>
+        <div class="pt-2 border-t border-white/[0.08]">
+          <a href="#contact" class="mobile-nav-link inline-flex items-center text-xs text-nebula font-medium py-1">
+            Download Resume (PDF) &rarr;
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28 sm:space-y-36 pt-12 pb-24">
+
+    <!-- =========================================================================
+         2. HERO SECTION (With Lakshya's Professional Portrait & 3D Tilt)
+         ========================================================================= -->
+    <section id="hero" class="pt-8 sm:pt-14 lg:pt-18 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+      
+      <!-- Text & Intro Column (Left) -->
+      <div class="w-full lg:w-3/5 space-y-6 flex flex-col items-start">
+        
+        <!-- Academic Distinction Badge with Subtle Pop -->
+        <div class="reveal-init reveal-down inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full text-xs font-medium glass-panel-subtle text-cosmic-grey border border-white/[0.08] pop-hover">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-starlight font-medium">B.Tech CSE @ HITS (CGPA: 9.5) · Data Science @ IIT Madras (CGPA: 8.0)</span>
+        </div>
+
+        <!-- Headline & Name -->
+        <div class="reveal-init reveal-up space-y-3">
+          <div class="text-sm font-mono text-dusty-cyan tracking-wider uppercase flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-dusty-cyan animate-ping"></span>
+            <span>Hello, World. I am</span>
+          </div>
+          <h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-starlight leading-[1.15]">
+            <span class="bg-gradient-to-r from-starlight via-dusty-cyan to-nebula bg-clip-text text-transparent">Lakshya R</span>
+          </h1>
+          <h2 class="text-lg sm:text-xl font-heading font-medium text-starlight/90">
+            Computer Science & Data Science Student <span class="text-nebula">|</span> Tech & AI Enthusiast
+          </h2>
+          <p class="text-base sm:text-lg text-cosmic-grey leading-relaxed font-normal pt-1">
+            Final-year Computer Science student passionate about software development, embedded systems, and data-driven solutions.
+          </p>
+        </div>
+
+        <!-- Action CTAs with High-Impact Pop Animations -->
+        <div class="reveal-init reveal-up delay-200 flex flex-wrap gap-4 items-center pt-2">
+          <!-- Primary CTA: Explore Projects -->
+          <a href="#projects" class="pop-hover inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-nebula-muted to-nebula hover:from-nebula hover:to-[#8c6eff] shadow-lg shadow-nebula/20 transition-all duration-300">
+            <span>Explore Projects</span>
+            <svg class="w-4 h-4 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+
+          <!-- Secondary CTA: Contact Me -->
+          <a href="#contact" class="pop-hover inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium text-sm text-starlight glass-panel hover:border-nebula/50 hover:bg-obsidian/90 transition-all duration-300">
+            <span>Contact Me</span>
+            <svg class="w-4 h-4 text-dusty-cyan pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+
+          <!-- Quick Proof Highlights -->
+          <div class="w-full sm:w-auto mt-2 sm:mt-0 flex items-center space-x-5 sm:ml-2 pt-3 sm:pt-0 border-t sm:border-t-0 border-white/[0.08] text-xs font-mono text-cosmic-grey">
+            <div class="pop-hover p-1 rounded"><span class="text-starlight font-bold text-sm">9.5/10</span> HITS CGPA</div>
+            <div class="pop-hover p-1 rounded"><span class="text-starlight font-bold text-sm">8.0/10</span> IITM CGPA</div>
+            <div class="pop-hover p-1 rounded"><span class="text-starlight font-bold text-sm">2+</span> Internships</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Lakshya R Professional Portrait Card (Right) -->
+      <div class="reveal-init reveal-right w-full lg:w-2/5 flex justify-center lg:justify-end">
+        <div class="tilt-card p-2 rounded-[28px] bg-gradient-to-tr from-nebula/30 via-dusty-cyan/20 to-white/10 shadow-2xl shadow-nebula/20 relative group">
+          
+          <!-- Inner Picture Container -->
+          <div class="relative w-64 h-80 sm:w-72 sm:h-92 rounded-[22px] overflow-hidden bg-obsidian border border-white/[0.1]">
+            <img 
+              src="assets/images/lakshya.jpg" 
+              alt="Lakshya R - Computer Science & Data Science Student" 
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+            
+            <!-- Subtle Bottom Gradient Tint -->
+            <div class="absolute inset-0 bg-gradient-to-t from-void/90 via-transparent to-transparent pointer-events-none"></div>
+
+            <!-- In-Card Badges -->
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+              <div class="px-2.5 py-1 rounded-lg glass-panel-subtle text-[11px] font-mono text-starlight border border-white/10 backdrop-blur-md">
+                Lakshya R
+              </div>
+              <div class="px-2.5 py-1 rounded-lg bg-nebula/80 text-[10px] font-mono text-white backdrop-blur-md">
+                Final Year B.Tech
+              </div>
+            </div>
+          </div>
+
+          <!-- Ambient Glow Ring -->
+          <div class="absolute -inset-1 bg-gradient-to-r from-nebula/40 to-dusty-cyan/30 rounded-[30px] blur-xl -z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         3. FEATURED PROJECTS SECTION (Directional Revelations & 3D Tilt Cards)
+         ========================================================================= -->
+    <section id="projects" class="space-y-10">
+      
+      <!-- Section Header & Filter Controls -->
+      <div class="reveal-init reveal-up flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2 border-b border-white/[0.08]">
+        <div>
+          <div class="flex items-center space-x-2 text-xs font-mono text-dusty-cyan tracking-wider uppercase">
+            <span class="w-1.5 h-1.5 rounded-full bg-dusty-cyan"></span>
+            <span>Innovations & Technical Systems</span>
+          </div>
+          <h2 class="font-heading font-bold text-3xl sm:text-4xl text-starlight mt-2">Featured Projects</h2>
+          <p class="text-sm sm:text-base text-cosmic-grey mt-1">Interactive cards featuring 3D perspective tilt and spotlight sheen on cursor move.</p>
+        </div>
+
+        <!-- Filter Pills with Spring Pop -->
+        <div class="flex flex-wrap gap-2 text-xs" role="tablist" aria-label="Project category filters">
+          <button class="project-filter-btn tab-pop active px-3.5 py-1.5 rounded-lg border border-nebula/60 bg-nebula/20 text-starlight" data-filter="all">All Projects</button>
+          <button class="project-filter-btn tab-pop px-3.5 py-1.5 rounded-lg border border-white/10 text-cosmic-grey hover:border-white/20" data-filter="ml-cloud">Machine Learning & Cloud</button>
+          <button class="project-filter-btn tab-pop px-3.5 py-1.5 rounded-lg border border-white/10 text-cosmic-grey hover:border-white/20" data-filter="iot-embedded">IoT & Embedded Systems</button>
+          <button class="project-filter-btn tab-pop px-3.5 py-1.5 rounded-lg border border-white/10 text-cosmic-grey hover:border-white/20" data-filter="ai-voice">AI & Speech</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid (Directional: Left, Center-Up, Right) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+        <!-- PROJECT 1: Predictive Maintenance of Industrial Machinery (Reveal Left) -->
+        <article class="project-card tilt-card reveal-init reveal-left rounded-2xl p-6 flex flex-col justify-between" data-category="ml-cloud">
+          <div>
+            <!-- Abstract Blueprint Graphic -->
+            <div class="w-full h-44 rounded-xl bg-gradient-to-br from-obsidian via-[#161a26] to-[#0c0f17] border border-white/[0.08] p-4 flex flex-col justify-between overflow-hidden relative mb-5 group">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono tracking-wider text-dusty-cyan uppercase px-2 py-0.5 rounded bg-dusty-cyan/10 border border-dusty-cyan/20">Predictive Model</span>
+                <span class="text-[11px] font-mono text-cosmic-grey">IBM Cloud Hosted</span>
+              </div>
+              <!-- Telemetry & Sensor Flow Graphic with Dynamic Pulse -->
+              <div class="flex items-center justify-center py-2">
+                <svg class="w-48 h-20 text-dusty-cyan/40 group-hover:text-dusty-cyan/70 transition-colors duration-300" viewBox="0 0 200 80" fill="none">
+                  <path d="M10 50 L45 20 L85 60 L125 15 L165 45 L190 30" stroke="currentColor" stroke-width="1.8" />
+                  <circle cx="45" cy="20" r="4" fill="#7C5CFC" class="animate-ping" style="animation-duration: 3s;" />
+                  <circle cx="85" cy="60" r="4" fill="#3B82F6" />
+                  <circle cx="125" cy="15" r="5" fill="#7C5CFC" />
+                  <circle cx="165" cy="45" r="4" fill="#3B82F6" />
+                </svg>
+              </div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-cosmic-grey">
+                <span>Model: <strong class="text-starlight font-bold">Random Forest</strong></span>
+                <span>Telemetry: <strong class="text-starlight font-bold">Real-Time Sensor</strong></span>
+              </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="space-y-2.5">
+              <div class="flex items-baseline justify-between">
+                <h3 class="font-heading font-semibold text-lg text-starlight">Predictive Maintenance of Industrial Machinery</h3>
+              </div>
+              <span class="text-xs font-mono text-nebula block">Internship Project</span>
+              <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+                Developed a Random Forest model to predict machinery failures using real-time sensor data. Deployed on IBM Cloud for maintenance insights and improving fault detection.
+              </p>
+            </div>
+
+            <!-- Tech Stack Tags with Pop Micro-Interactions -->
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">Python</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">Machine Learning</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">Random Forest</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-dusty-cyan">IBM Cloud</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">GitHub</span>
+            </div>
+          </div>
+
+          <!-- Card Actions with Spring Pop -->
+          <div class="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+            <button class="open-case-study pop-hover inline-flex items-center space-x-1.5 text-xs font-medium text-nebula hover:text-white transition-colors" data-project="predictive-maintenance">
+              <span>View Case Study</span>
+              <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="pop-hover p-1.5 rounded-lg text-cosmic-grey hover:text-starlight hover:bg-white/5 transition-all" aria-label="Predictive Maintenance GitHub">
+                <svg class="w-4 h-4 pop-icon" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+              </a>
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="pop-hover p-1.5 rounded-lg text-cosmic-grey hover:text-starlight hover:bg-white/5 transition-all" aria-label="Predictive Maintenance Demo">
+                <svg class="w-4 h-4 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: IoT-Based Smart Plant Maintenance (Reveal Up) -->
+        <article class="project-card tilt-card reveal-init reveal-up delay-100 rounded-2xl p-6 flex flex-col justify-between" data-category="iot-embedded">
+          <div>
+            <!-- Abstract Blueprint Graphic -->
+            <div class="w-full h-44 rounded-xl bg-gradient-to-br from-obsidian via-[#171b26] to-[#0c121c] border border-white/[0.08] p-4 flex flex-col justify-between overflow-hidden relative mb-5 group">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono tracking-wider text-emerald-400 uppercase px-2 py-0.5 rounded bg-emerald-400/10 border border-emerald-400/20">IoT Ecosystem</span>
+                <span class="text-[11px] font-mono text-cosmic-grey">Blynk IoT Live Feed</span>
+              </div>
+              <div class="flex items-center justify-center py-2">
+                <svg class="w-48 h-20 text-emerald-400/40 group-hover:text-emerald-400/70 transition-colors duration-300" viewBox="0 0 200 80" fill="none">
+                  <rect x="30" y="25" width="40" height="30" rx="4" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="50" cy="40" r="6" fill="#3B82F6" />
+                  <path d="M70 40 L120 40" stroke="#7C5CFC" stroke-width="1.5" stroke-dasharray="3 3" />
+                  <circle cx="150" cy="40" r="18" stroke="#10b981" stroke-width="1.5" />
+                  <path d="M150 30 L150 50 M140 40 L160 40" stroke="#10b981" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-cosmic-grey">
+                <span>Hardware: <strong class="text-starlight font-bold">Arduino IDE</strong></span>
+                <span>Sensors: <strong class="text-starlight font-bold">Moisture, Temp, PIR</strong></span>
+              </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="space-y-2.5">
+              <h3 class="font-heading font-semibold text-lg text-starlight">IoT-Based Smart Plant Maintenance & Watering System</h3>
+              <span class="text-xs font-mono text-dusty-cyan block">Embedded Ecosystem</span>
+              <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+                Built an IoT system with Blynk IoT, and Arduino IDE to monitor soil moisture, temperature, humidity, and animal movement. Irrigation system with real-time dashboard, alerts, and manual override.
+              </p>
+            </div>
+
+            <!-- Tech Stack Tags with Pop Micro-Interactions -->
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-dusty-cyan">IoT</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">Arduino IDE</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">Blynk IoT</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">Sensors</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-nebula">Embedded Systems</span>
+            </div>
+          </div>
+
+          <!-- Card Actions with Spring Pop -->
+          <div class="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+            <button class="open-case-study pop-hover inline-flex items-center space-x-1.5 text-xs font-medium text-nebula hover:text-white transition-colors" data-project="smart-plant-iot">
+              <span>View Case Study</span>
+              <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="pop-hover p-1.5 rounded-lg text-cosmic-grey hover:text-starlight hover:bg-white/5 transition-all" aria-label="Smart Plant IoT GitHub">
+                <svg class="w-4 h-4 pop-icon" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+              </a>
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="pop-hover p-1.5 rounded-lg text-cosmic-grey hover:text-starlight hover:bg-white/5 transition-all" aria-label="Smart Plant IoT Demo">
+                <svg class="w-4 h-4 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: AI-Driven Voice-Based First Aid Assistant (Reveal Right) -->
+        <article class="project-card tilt-card reveal-init reveal-right delay-200 rounded-2xl p-6 flex flex-col justify-between md:col-span-2 lg:col-span-1" data-category="ai-voice">
+          <div>
+            <!-- Abstract Blueprint Graphic -->
+            <div class="w-full h-44 rounded-xl bg-gradient-to-br from-obsidian via-[#1c1526] to-[#100c17] border border-white/[0.08] p-4 flex flex-col justify-between overflow-hidden relative mb-5 group">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono tracking-wider text-nebula uppercase px-2 py-0.5 rounded bg-nebula/10 border border-nebula/20">Audio Emergency AI</span>
+                <span class="text-[11px] font-mono text-cosmic-grey">Hands-Free STT / TTS</span>
+              </div>
+              <div class="flex items-center justify-center py-2">
+                <svg class="w-48 h-20 text-nebula/40 group-hover:text-nebula/70 transition-colors duration-300" viewBox="0 0 200 80" fill="none">
+                  <path d="M40 40 L60 20 L80 60 L100 15 L120 65 L140 30 L160 40" stroke="#7C5CFC" stroke-width="2" />
+                  <circle cx="100" cy="15" r="4" fill="#3B82F6" />
+                  <circle cx="120" cy="65" r="4" fill="#7C5CFC" />
+                </svg>
+              </div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-cosmic-grey">
+                <span>Interaction: <strong class="text-starlight font-bold">100% Voice</strong></span>
+                <span>Guidance: <strong class="text-starlight font-bold">Real-Time Triage</strong></span>
+              </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="space-y-2.5">
+              <h3 class="font-heading font-semibold text-lg text-starlight">AI-Driven Voice-Based First Aid Assistant</h3>
+              <span class="text-xs font-mono text-emerald-400 block">Emergency Voice Copilot</span>
+              <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+                Built a voice-based first aid assistant using speech recognition and text-to-speech to provide real-time, hands-free emergency guidance during critical situations.
+              </p>
+            </div>
+
+            <!-- Tech Stack Tags with Pop Micro-Interactions -->
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">Python</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-nebula">AI</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-cosmic-grey">Speech Recognition</span>
+              <span class="skill-chip text-[11px] font-mono px-2 py-0.5 rounded bg-obsidian border border-white/[0.08] text-dusty-cyan">Text-to-Speech</span>
+            </div>
+          </div>
+
+          <!-- Card Actions with Spring Pop -->
+          <div class="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+            <button class="open-case-study pop-hover inline-flex items-center space-x-1.5 text-xs font-medium text-nebula hover:text-white transition-colors" data-project="first-aid-voice">
+              <span>View Case Study</span>
+              <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="pop-hover p-1.5 rounded-lg text-cosmic-grey hover:text-starlight hover:bg-white/5 transition-all" aria-label="First Aid Assistant GitHub">
+                <svg class="w-4 h-4 pop-icon" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+              </a>
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="pop-hover p-1.5 rounded-lg text-cosmic-grey hover:text-starlight hover:bg-white/5 transition-all" aria-label="First Aid Assistant Demo">
+                <svg class="w-4 h-4 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. ABOUT ME SECTION (Exact Resume Bio & Philosophical Pillars)
+         ========================================================================= -->
+    <section id="about" class="space-y-10">
+      <div class="reveal-init reveal-up pb-2 border-b border-white/[0.08]">
+        <div class="flex items-center space-x-2 text-xs font-mono text-nebula tracking-wider uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-nebula"></span>
+          <span>Background & Vision</span>
+        </div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-starlight mt-2">About Me</h2>
+        <p class="text-sm sm:text-base text-cosmic-grey mt-1">Academics, problem-solving mindset, and passion for computing.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Bio Narrative (Slide in from Left with Exact Resume Text) -->
+        <div class="reveal-init reveal-left lg:col-span-7 space-y-5 text-cosmic-grey leading-relaxed text-base">
+          <div class="p-6 rounded-2xl glass-panel border border-white/[0.08] space-y-4">
+            <h3 class="font-heading font-semibold text-xl text-starlight">Professional Overview</h3>
+            <p class="text-starlight/95 text-base sm:text-lg leading-relaxed font-normal">
+              Final year B. Tech Computer Science & Engineering student with a strong interest in technology and innovation. I enjoy learning about software development, embedded systems, and data-driven solutions. I am passionate about applying my technical knowledge to real world projects and continuously improving my problem-solving and programming skills.
+            </p>
+            <p class="text-sm text-cosmic-grey leading-relaxed">
+              Currently completing my B.Tech CSE degree at <span class="text-starlight font-medium">Hindustan Institute of Technology and Science</span> (CGPA: 9.5 till Semester 6) while concurrently pursuing the rigorous Data Science and Applications degree program at <span class="text-starlight font-medium">IIT Madras</span> (CGPA: 8.0).
+            </p>
+          </div>
+
+          <!-- Quick facts tag list with Pop -->
+          <div class="pt-2 flex flex-wrap gap-2 text-xs font-mono text-cosmic-grey">
+            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">🎓 Dual Degree Scholar</span>
+            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">⚡ AI & Cloud Intern (Edunet / AICTE)</span>
+            <span class="skill-chip px-3 py-1 rounded-md glass-panel border border-white/[0.08] text-starlight">🌱 IoT & Embedded Solutions</span>
+          </div>
+        </div>
+
+        <!-- Pillars / Approach Cards (Slide in from Right with 3D Tilt) -->
+        <div class="reveal-init reveal-right delay-100 lg:col-span-5 space-y-4">
+          
+          <!-- Pillar 1 -->
+          <div class="tilt-card rounded-xl p-5">
+            <div class="flex items-center space-x-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-nebula/15 border border-nebula/30 flex items-center justify-center text-nebula font-heading font-bold text-sm pop-icon">01</div>
+              <h3 class="font-heading font-semibold text-base text-starlight">Data-Driven Intelligence</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+              Applying machine learning models and statistical rigor from IIT Madras to predict failures and uncover actionable patterns.
+            </p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="tilt-card rounded-xl p-5">
+            <div class="flex items-center space-x-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-dusty-cyan/15 border border-dusty-cyan/30 flex items-center justify-center text-dusty-cyan font-heading font-bold text-sm pop-icon">02</div>
+              <h3 class="font-heading font-semibold text-base text-starlight">Hardware & IoT Synergy</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+              Interfacing physical sensors, microcontrollers, and cloud telemetry to build closed-loop autonomous environments.
+            </p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="tilt-card rounded-xl p-5">
+            <div class="flex items-center space-x-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-starlight font-heading font-bold text-sm pop-icon">03</div>
+              <h3 class="font-heading font-semibold text-base text-starlight">Cloud & Scalable Deployment</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed">
+              Packaging AI services on cloud infrastructure (IBM Cloud) for reliable, low-latency, and accessible usage.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. SKILLS & CAPABILITIES SECTION (Interactive Pop Chips & 3D Tilt Panels)
+         ========================================================================= -->
+    <section id="skills" class="space-y-10">
+      <div class="reveal-init reveal-up pb-2 border-b border-white/[0.08]">
+        <div class="flex items-center space-x-2 text-xs font-mono text-dusty-cyan tracking-wider uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-dusty-cyan"></span>
+          <span>Technical Stack & Fluency</span>
+        </div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-starlight mt-2">Skills & Capabilities</h2>
+        <p class="text-sm sm:text-base text-cosmic-grey mt-1">Directly grounded in resume coursework, project implementations, and professional certifications.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Category 1: Technical Skills (Slide Left) -->
+        <div class="tilt-card reveal-init reveal-left rounded-2xl p-6 space-y-4">
+          <div class="flex items-center space-x-2.5 text-starlight font-heading font-semibold text-base border-b border-white/[0.08] pb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-nebula shadow-sm shadow-nebula"></span>
+            <h3>Technical & Programming Skills</h3>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">C & C++</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">Python</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">Data Structures & Algorithms</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">Java</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">SQL</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">HTML</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">Artificial Intelligence (TensorFlow, Keras)</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">Internet of Things (IoT)</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-starlight">MongoDB</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-dusty-cyan">IBM Cloud</span>
+            <span class="skill-chip px-3 py-1.5 text-xs font-mono rounded-lg bg-obsidian border border-white/[0.08] text-cosmic-grey">Microsoft Office</span>
+          </div>
+        </div>
+
+        <!-- Category 2: Soft Skills (Slide Up) -->
+        <div class="tilt-card reveal-init reveal-up delay-100 rounded-2xl p-6 space-y-4">
+          <div class="flex items-center space-x-2.5 text-starlight font-heading font-semibold text-base border-b border-white/[0.08] pb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-dusty-cyan shadow-sm shadow-dusty-cyan"></span>
+            <h3>Soft Skills</h3>
+          </div>
+          <div class="space-y-3 pt-1">
+            <div class="pop-hover flex items-center space-x-3 p-2.5 rounded-xl bg-obsidian border border-white/[0.06]">
+              <span class="text-dusty-cyan font-bold pop-icon">▹</span>
+              <span class="text-xs sm:text-sm text-starlight font-medium">Communication</span>
+            </div>
+            <div class="pop-hover flex items-center space-x-3 p-2.5 rounded-xl bg-obsidian border border-white/[0.06]">
+              <span class="text-nebula font-bold pop-icon">▹</span>
+              <span class="text-xs sm:text-sm text-starlight font-medium">Problem-Solving</span>
+            </div>
+            <div class="pop-hover flex items-center space-x-3 p-2.5 rounded-xl bg-obsidian border border-white/[0.06]">
+              <span class="text-dusty-cyan font-bold pop-icon">▹</span>
+              <span class="text-xs sm:text-sm text-starlight font-medium">Team Collaboration</span>
+            </div>
+            <div class="pop-hover flex items-center space-x-3 p-2.5 rounded-xl bg-obsidian border border-white/[0.06]">
+              <span class="text-nebula font-bold pop-icon">▹</span>
+              <span class="text-xs sm:text-sm text-starlight font-medium">Adaptability</span>
+            </div>
+            <div class="pop-hover flex items-center space-x-3 p-2.5 rounded-xl bg-obsidian border border-white/[0.06]">
+              <span class="text-dusty-cyan font-bold pop-icon">▹</span>
+              <span class="text-xs sm:text-sm text-starlight font-medium">Critical Thinking</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3: Languages Known (Slide Right) -->
+        <div class="tilt-card reveal-init reveal-right delay-200 rounded-2xl p-6 space-y-4 md:col-span-2 lg:col-span-1">
+          <div class="flex items-center space-x-2.5 text-starlight font-heading font-semibold text-base border-b border-white/[0.08] pb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400"></span>
+            <h3>Languages Spoken</h3>
+          </div>
+          <p class="text-xs text-cosmic-grey">Multilingual fluency across academic, regional, and national contexts.</p>
+          <div class="space-y-3 pt-1">
+            <div class="pop-hover flex items-center justify-between p-3 rounded-xl bg-obsidian border border-white/[0.06]">
+              <span class="text-xs sm:text-sm font-medium text-starlight">English</span>
+              <span class="skill-chip text-[11px] font-mono text-nebula bg-nebula/10 px-2.5 py-0.5 rounded border border-nebula/20">Professional</span>
+            </div>
+            <div class="pop-hover flex items-center justify-between p-3 rounded-xl bg-obsidian border border-white/[0.06]">
+              <span class="text-xs sm:text-sm font-medium text-starlight">Tamil</span>
+              <span class="skill-chip text-[11px] font-mono text-dusty-cyan bg-dusty-cyan/10 px-2.5 py-0.5 rounded border border-dusty-cyan/20">Native / Fluent</span>
+            </div>
+            <div class="pop-hover flex items-center justify-between p-3 rounded-xl bg-obsidian border border-white/[0.06]">
+              <span class="text-xs sm:text-sm font-medium text-starlight">Hindi</span>
+              <span class="skill-chip text-[11px] font-mono text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded border border-emerald-400/20">Conversational</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. EDUCATION & EXPERIENCE TIMELINE SECTION (Directly from Resume)
+         ========================================================================= -->
+    <section id="timeline" class="space-y-10">
+      <div class="reveal-init reveal-up pb-2 border-b border-white/[0.08]">
+        <div class="flex items-center space-x-2 text-xs font-mono text-nebula tracking-wider uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-nebula"></span>
+          <span>Academic & Internship Trajectory</span>
+        </div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-starlight mt-2">Education & Experience</h2>
+        <p class="text-sm sm:text-base text-cosmic-grey mt-1">Dual-degree academic foundation combined with industry-backed internships in AI & Cloud.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Experience & Internships (Slide Left) -->
+        <div class="reveal-init reveal-left lg:col-span-6 space-y-6">
+          <h3 class="font-heading font-semibold text-xl text-starlight flex items-center space-x-2">
+            <span class="text-dusty-cyan pop-icon">▹</span>
+            <span>Internship Experience & Certifications</span>
+          </h3>
+
+          <div class="relative pl-6 sm:pl-8 border-l border-white/[0.08] space-y-8 ml-3">
+            
+            <!-- Internship 1: Edunet / AICTE -->
+            <div class="timeline-node tilt-card p-5 rounded-xl space-y-2">
+              <div class="flex flex-wrap items-baseline justify-between gap-1">
+                <h4 class="font-heading font-semibold text-base sm:text-lg text-starlight">Intern | Edunet Foundation</h4>
+                <span class="text-xs font-mono text-cosmic-grey">July, 2025 – August, 2025</span>
+              </div>
+              <div class="text-xs font-mono text-dusty-cyan">In Collaboration with AICTE</div>
+              <ul class="text-xs sm:text-sm text-cosmic-grey leading-relaxed space-y-1.5 list-disc pl-4 pt-1">
+                <li>Developed a predictive modelling solution using IBM Cloud, applying AI and Cloud Computing concepts learned through IBM SkillsBuild modules such as Getting Started with AI and RAG Lab.</li>
+                <li>Implemented data analysis and model training techniques, and used GitHub for project management and version control.</li>
+              </ul>
+            </div>
+
+            <!-- Internship 2: Coincent -->
+            <div class="timeline-node tilt-card p-5 rounded-xl space-y-2">
+              <div class="flex flex-wrap items-baseline justify-between gap-1">
+                <h4 class="font-heading font-semibold text-base sm:text-lg text-starlight">Artificial Intelligence with Python</h4>
+                <span class="text-xs font-mono text-cosmic-grey">October 2024</span>
+              </div>
+              <div class="text-xs font-mono text-nebula">Coincent Internship</div>
+              <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed pt-1">
+                Completed an internship on Artificial intelligence with python October 2024 with Coincent. Understanding AI systems using Python, and popular libraries such as TensorFlow and Keras. Understanding and implementing AI solutions across various domains.
+              </p>
+            </div>
+
+            <!-- Course / Certification: MongoDB -->
+            <div class="timeline-node tilt-card p-5 rounded-xl space-y-2">
+              <div class="flex flex-wrap items-baseline justify-between gap-1">
+                <h4 class="font-heading font-semibold text-base sm:text-lg text-starlight">MongoDB Database Course</h4>
+                <span class="text-xs font-mono text-emerald-400">Database Certification</span>
+              </div>
+              <div class="text-xs font-mono text-cosmic-grey">NoSQL Database Architecture & Data Modelling</div>
+              <p class="text-xs sm:text-sm text-cosmic-grey leading-relaxed pt-1">
+                The MongoDB course taught the fundamentals of MongoDB, a NoSQL database. Covering topics like database creation, data modelling. Understanding how to store, manage, and retrieve data efficiently using MongoDB.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Education (Slide Right) -->
+        <div class="reveal-init reveal-right delay-100 lg:col-span-6 space-y-6">
+          <h3 class="font-heading font-semibold text-xl text-starlight flex items-center space-x-2">
+            <span class="text-nebula pop-icon">▹</span>
+            <span>Education History</span>
+          </h3>
+
+          <div class="relative pl-6 sm:pl-8 border-l border-white/[0.08] space-y-6 ml-3">
+            
+            <!-- Education 1: HITS -->
+            <div class="timeline-node tilt-card p-5 rounded-xl space-y-2">
+              <div class="flex flex-wrap items-baseline justify-between gap-1">
+                <h4 class="font-heading font-semibold text-base text-starlight">Bachelor of Technology Computer Science & Engineering</h4>
+                <span class="text-xs font-mono text-cosmic-grey">2023 – Present</span>
+              </div>
+              <div class="text-xs font-mono text-dusty-cyan">Hindustan Institute of Technology and Science</div>
+              <div class="inline-flex items-center space-x-2 mt-1 px-2.5 py-1 rounded bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 text-xs font-mono skill-chip">
+                <span>CGPA: 9.5 (Till Semester 6)</span>
+              </div>
+            </div>
+
+            <!-- Education 2: IIT Madras -->
+            <div class="timeline-node tilt-card p-5 rounded-xl space-y-2">
+              <div class="flex flex-wrap items-baseline justify-between gap-1">
+                <h4 class="font-heading font-semibold text-base text-starlight">Degree Program in Data Science and Applications</h4>
+                <span class="text-xs font-mono text-cosmic-grey">2024 – Present</span>
+              </div>
+              <div class="text-xs font-mono text-nebula">Indian Institute of Technology Madras (IIT Madras)</div>
+              <div class="inline-flex items-center space-x-2 mt-1 px-2.5 py-1 rounded bg-nebula/10 border border-nebula/20 text-nebula text-xs font-mono skill-chip">
+                <span>CGPA: 8</span>
+              </div>
+            </div>
+
+            <!-- Education 3: Gateway International School -->
+            <div class="timeline-node tilt-card p-5 rounded-xl space-y-2">
+              <div class="flex flex-wrap items-baseline justify-between gap-1">
+                <h4 class="font-heading font-semibold text-base text-starlight">Gateway International School (CBSE)</h4>
+                <span class="text-xs font-mono text-cosmic-grey">Schooling</span>
+              </div>
+              <div class="text-xs font-mono text-cosmic-grey">Central Board of Secondary Education (CBSE)</div>
+              <div class="flex flex-wrap gap-2 mt-1 text-xs font-mono text-cosmic-grey">
+                <span class="skill-chip px-3 py-1 rounded bg-obsidian border border-white/[0.08] text-starlight">12th Grade: <strong class="text-dusty-cyan font-bold ml-1">83%</strong></span>
+                <span class="skill-chip px-3 py-1 rounded bg-obsidian border border-white/[0.08] text-starlight">10th Grade: <strong class="text-emerald-400 font-bold ml-1">95%</strong></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         7. CONTACT SECTION (Directional Reveals)
+         ========================================================================= -->
+    <section id="contact" class="space-y-10">
+      <div class="reveal-init reveal-up pb-2 border-b border-white/[0.08]">
+        <div class="flex items-center space-x-2 text-xs font-mono text-dusty-cyan tracking-wider uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-dusty-cyan"></span>
+          <span>Communication Channels</span>
+        </div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-starlight mt-2">Get in Touch</h2>
+        <p class="text-sm sm:text-base text-cosmic-grey mt-1">Available for software development opportunities, AI projects, and research collaborations.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Interactive Transmission Form (Slide in Left) -->
+        <div class="reveal-init reveal-left lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="space-y-1">
+            <h3 class="font-heading font-semibold text-xl text-starlight">Send a Message</h3>
+            <p class="text-xs sm:text-sm text-cosmic-grey">Drop a message directly to Lakshya's inbox.</p>
+          </div>
+
+          <form id="contact-form" class="space-y-4" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label for="contact-name" class="block text-xs font-mono text-cosmic-grey">Your Name <span class="text-nebula">*</span></label>
+                <input type="text" id="contact-name" required placeholder="Dr. Jane Doe" class="input-cosmic w-full px-3.5 py-2.5 rounded-xl text-sm" />
+              </div>
+              <div class="space-y-1.5">
+                <label for="contact-email" class="block text-xs font-mono text-cosmic-grey">Email Address <span class="text-nebula">*</span></label>
+                <input type="email" id="contact-email" required placeholder="jane@company.com" class="input-cosmic w-full px-3.5 py-2.5 rounded-xl text-sm" />
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="contact-subject" class="block text-xs font-mono text-cosmic-grey">Subject</label>
+              <input type="text" id="contact-subject" placeholder="Project Collaboration / Opportunity" class="input-cosmic w-full px-3.5 py-2.5 rounded-xl text-sm" />
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="contact-message" class="block text-xs font-mono text-cosmic-grey">Message <span class="text-nebula">*</span></label>
+              <textarea id="contact-message" required rows="4" placeholder="Hello Lakshya, I saw your Predictive Maintenance and IoT projects..." class="input-cosmic w-full px-3.5 py-2.5 rounded-xl text-sm resize-none"></textarea>
+            </div>
+
+            <button type="submit" id="form-submit-btn" class="pop-hover w-full sm:w-auto px-6 py-3 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-nebula-muted to-nebula hover:from-nebula hover:to-[#8c6eff] shadow-lg shadow-nebula/20 transition-all flex items-center justify-center space-x-2">
+              <span>Send Message</span>
+              <svg class="w-4 h-4 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Direct Contact Details & Resume Card (Slide in Right) -->
+        <div class="reveal-init reveal-right delay-100 lg:col-span-5 space-y-5">
+          
+          <!-- Downloadable Resume Card with 3D Tilt -->
+          <div class="tilt-card rounded-2xl p-6 space-y-4 border border-nebula/30">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-xl bg-nebula/15 border border-nebula/30 flex items-center justify-center text-nebula pop-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <span class="text-[11px] font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/20">Verified Credentials</span>
+            </div>
+            <div>
+              <h3 class="font-heading font-semibold text-lg text-starlight">Curriculum Vitae</h3>
+              <p class="text-xs text-cosmic-grey mt-1">Official resume featuring B.Tech CSE (9.5 CGPA), IIT Madras Data Science (CGPA: 8), and internship credentials.</p>
+            </div>
+            <a href="#" onclick="alert('Resume PDF: Place your resume file as resume.pdf in this folder to enable download!'); return false;" class="pop-hover w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-obsidian border border-white/10 hover:border-nebula/50 text-starlight hover:bg-obsidian/80 transition-all">
+              <svg class="w-3.5 h-3.5 text-dusty-cyan pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
+              <span>Download Official Resume (PDF)</span>
+            </a>
+          </div>
+
+          <!-- Direct Phone & Email Cards with 3D Tilt -->
+          <div class="tilt-card rounded-2xl p-6 space-y-4">
+            <h3 class="font-heading font-medium text-sm text-starlight">Direct Contact Coordinates</h3>
+            
+            <!-- Email Item with Pop Copy -->
+            <div class="pop-hover flex items-center justify-between p-3 rounded-xl bg-obsidian border border-white/[0.08]">
+              <div class="flex items-center space-x-3 truncate mr-2">
+                <svg class="w-4 h-4 text-nebula shrink-0 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <a href="mailto:lakshyar13@gmail.com" class="font-mono text-xs text-starlight hover:text-nebula transition-colors truncate">lakshyar13@gmail.com</a>
+              </div>
+              <button id="copy-email-btn" data-email="lakshyar13@gmail.com" class="pop-hover px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 text-starlight border border-white/10 transition-colors shrink-0">
+                Copy
+              </button>
+            </div>
+
+            <!-- Phone Item with Pop -->
+            <div class="pop-hover flex items-center justify-between p-3 rounded-xl bg-obsidian border border-white/[0.08]">
+              <div class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-dusty-cyan shrink-0 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                <a href="tel:+919043230171" class="font-mono text-xs text-starlight hover:text-dusty-cyan transition-colors">+91 9043230171</a>
+              </div>
+              <span class="text-[11px] font-mono text-cosmic-grey">Voice / WhatsApp</span>
+            </div>
+          </div>
+
+          <!-- Social Footprint Links with Pop Effect -->
+          <div class="tilt-card rounded-2xl p-6 space-y-3">
+            <h3 class="font-heading font-medium text-sm text-starlight">Digital Footprint & Networks</h3>
+            <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="pop-hover flex items-center space-x-2 p-2.5 rounded-xl bg-obsidian border border-white/[0.08] hover:border-nebula/40 text-starlight transition-colors">
+                <svg class="w-4 h-4 text-cosmic-grey pop-icon" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="pop-hover flex items-center space-x-2 p-2.5 rounded-xl bg-obsidian border border-white/[0.08] hover:border-dusty-cyan/40 text-starlight transition-colors">
+                <svg class="w-4 h-4 text-dusty-cyan pop-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       8. FOOTER
+       ========================================================================= -->
+  <footer class="relative z-10 border-t border-white/[0.08] bg-void/90 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cosmic-grey font-mono">
+      <div class="flex items-center space-x-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-nebula"></span>
+        <span>Lakshya R · Computer Science & Data Science Portfolio &copy; 2026</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <span>Interactive Deep Space Cosmic Theme</span>
+        <a href="#hero" class="hover:text-starlight transition-colors pop-hover">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       CASE STUDY / PROJECT ARCHITECTURE MODAL
+       ========================================================================= -->
+  <div id="case-study-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <!-- Backdrop blur overlay -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-void/80 backdrop-blur-md transition-opacity"></div>
+
+    <!-- Modal Panel -->
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+      <div class="relative w-full max-w-2xl bg-obsidian border border-white/[0.12] rounded-2xl p-6 sm:p-8 shadow-2xl shadow-void/90 space-y-6">
+        
+        <!-- Modal Header -->
+        <div class="flex items-start justify-between pb-4 border-b border-white/[0.08]">
+          <div class="space-y-1">
+            <span id="modal-category" class="text-xs font-mono text-dusty-cyan">Category · Architecture</span>
+            <h3 id="modal-title" class="font-heading font-bold text-2xl text-starlight">Project Title</h3>
+          </div>
+          <button id="modal-close-btn" class="p-1.5 rounded-lg text-cosmic-grey hover:text-starlight hover:bg-white/5 transition-colors pop-hover" aria-label="Close modal">
+            <svg class="w-5 h-5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Metrics Row -->
+        <div id="modal-metrics" class="grid grid-cols-3 gap-3"></div>
+
+        <!-- Problem & Solution Breakdown -->
+        <div class="space-y-4 text-sm leading-relaxed text-cosmic-grey">
+          <div>
+            <h4 class="font-heading font-semibold text-starlight text-base mb-1">System Overview</h4>
+            <p id="modal-overview"></p>
+          </div>
+          <div>
+            <h4 class="font-heading font-semibold text-starlight text-base mb-1">The Problem / Motivation</h4>
+            <p id="modal-problem"></p>
+          </div>
+          <div>
+            <h4 class="font-heading font-semibold text-starlight text-base mb-1">Architecture & Solution</h4>
+            <p id="modal-solution"></p>
+          </div>
+        </div>
+
+        <!-- Modal Footer Actions with Pop -->
+        <div class="pt-4 border-t border-white/[0.08] flex items-center justify-end space-x-3">
+          <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="pop-hover px-4 py-2 rounded-xl text-xs font-medium bg-obsidian border border-white/[0.1] text-starlight hover:bg-white/5 transition-colors inline-flex items-center space-x-2">
+            <span>View GitHub Repository</span>
+            <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+          <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="pop-hover px-4 py-2 rounded-xl text-xs font-medium bg-nebula text-white hover:bg-nebula-muted transition-colors inline-flex items-center space-x-2">
+            <span>Live Demonstration</span>
+            <svg class="w-3.5 h-3.5 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TOAST NOTIFICATION COMPONENT
+       ========================================================================= -->
+  <div id="toast" class="toast-notice hidden flex items-center space-x-3 px-4 py-3 rounded-xl bg-obsidian border border-nebula/40 shadow-xl shadow-void/80 text-xs font-mono text-starlight" role="status" aria-live="polite">
+    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span id="toast-message">Notification message</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/cosmic-canvas.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
