@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Scroll Progress Bar & Directional Tracking
   // -------------------------------------------------------------------------
   const scrollProgressBar = document.getElementById('scroll-progress');
+  const header = document.querySelector('header');
   let lastScrollPos = window.scrollY;
 
   const updateScrollProgress = () => {
@@ -27,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
     if (scrollProgressBar) {
       scrollProgressBar.style.width = `${progress}%`;
+    }
+    if (header) {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     }
   };
 
@@ -388,10 +396,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentId = entry.target.getAttribute('id');
         navLinks.forEach(link => {
           if (link.getAttribute('href') === `#${currentId}`) {
-            link.classList.add('text-nebula', 'font-medium');
+            link.classList.add('text-nebula', 'font-medium', 'active-nav');
             link.classList.remove('text-cosmic-grey');
           } else {
-            link.classList.remove('text-nebula', 'font-medium');
+            link.classList.remove('text-nebula', 'font-medium', 'active-nav');
             link.classList.add('text-cosmic-grey');
           }
         });

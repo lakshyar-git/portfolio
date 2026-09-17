@@ -49,11 +49,29 @@ h1, h2, h3, h4, .font-heading {
   left: 0;
   height: 3px;
   width: 0%;
-  background: linear-gradient(90deg, #7C5CFC 0%, #3B82F6 50%, #7C5CFC 100%);
+  background: linear-gradient(90deg, #7C5CFC 0%, #38BDF8 50%, #7C5CFC 100%);
   z-index: 100;
-  box-shadow: 0 0 12px rgba(124, 92, 252, 0.7);
+  box-shadow: 0 0 14px rgba(124, 92, 252, 0.85), 0 0 24px rgba(56, 189, 248, 0.45);
   transition: width 0.08s ease-out;
   pointer-events: none;
+}
+
+#scroll-progress::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: -2.5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 10px #38BDF8, 0 0 20px #7C5CFC;
+  animation: progressPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.8; }
 }
 
 /* Custom Cosmic Scrollbar */
@@ -206,6 +224,88 @@ h1, h2, h3, h4, .font-heading {
 /* --------------------------------------------------------------------------
    Pop Micro-Interactions (Icons, Tabs, Pills, Buttons)
    -------------------------------------------------------------------------- */
+/* Button Shimmer Light Sweep (Micro-Interaction / Accent) */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+  transform: rotate(25deg);
+  animation: shimmerSweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0%, 65% { left: -80%; }
+  100% { left: 160%; }
+}
+
+/* Living Cosmic Gradient Text Shimmer (Hero Headline) */
+.cosmic-shimmer-text {
+  background: linear-gradient(110deg, #F1F5F9 15%, #60A5FA 38%, #C084FC 55%, #F1F5F9 78%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: cosmicTextShimmer 6.5s ease-in-out infinite;
+}
+
+@keyframes cosmicTextShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Portrait Radiant Halo Breathing */
+.cosmic-halo-breath {
+  animation: cosmicHaloBreath 4.5s ease-in-out infinite;
+}
+
+@keyframes cosmicHaloBreath {
+  0%, 100% { transform: scale(1); opacity: 0.70; filter: blur(20px); }
+  50% { transform: scale(1.06); opacity: 0.95; filter: blur(26px); }
+}
+
+/* Dynamic Navbar Scroll Styling */
+header.scrolled {
+  background-color: rgba(9, 10, 15, 0.88) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(124, 92, 252, 0.25) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 15px rgba(124, 92, 252, 0.08);
+}
+
+/* Nav Link Animated Underline */
+.desktop-nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.desktop-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #7C5CFC, #38BDF8);
+  border-radius: 9999px;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desktop-nav-link:hover::after,
+.desktop-nav-link.active-nav::after {
+  width: 100%;
+  left: 0;
+}
+
 /* Spring Pop on Hover */
 .pop-hover {
   transition: transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -285,7 +385,7 @@ button:hover .pop-icon {
 }
 
 /* --------------------------------------------------------------------------
-   Cursor Glow Effect
+   Cursor Glow Effect (Enhanced Luminosity)
    -------------------------------------------------------------------------- */
 #cursor-glow {
   pointer-events: none;
@@ -297,8 +397,8 @@ button:hover .pop-icon {
   z-index: 1;
   background: radial-gradient(
     650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-    rgba(124, 92, 252, 0.1),
-    rgba(59, 130, 246, 0.04) 40%,
+    rgba(124, 92, 252, 0.15),
+    rgba(59, 130, 246, 0.07) 40%,
     transparent 70%
   );
   transition: opacity 0.4s ease;
@@ -312,17 +412,44 @@ button:hover .pop-icon {
 }
 
 /* --------------------------------------------------------------------------
-   Subtle Cosmic Glow Gradients
+   Subtle Cosmic Glow Gradients (Brightened & Floating)
    -------------------------------------------------------------------------- */
 .cosmic-nebula-glow {
   position: absolute;
   border-radius: 50%;
   filter: blur(120px);
   pointer-events: none;
-  opacity: 0.28;
+  opacity: 0.40;
   z-index: 0;
   will-change: transform, opacity;
   transition: transform 0.8s ease-out;
+}
+
+.cosmic-float-1 {
+  animation: cosmicFloat1 18s ease-in-out infinite alternate;
+}
+
+.cosmic-float-2 {
+  animation: cosmicFloat2 24s ease-in-out infinite alternate;
+}
+
+.cosmic-float-3 {
+  animation: cosmicFloat3 20s ease-in-out infinite alternate;
+}
+
+@keyframes cosmicFloat1 {
+  0% { transform: translate(-50%, 0) scale(1); }
+  100% { transform: translate(-48%, -35px) scale(1.08); }
+}
+
+@keyframes cosmicFloat2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, 30px) scale(1.1); }
+}
+
+@keyframes cosmicFloat3 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(35px, -25px) scale(1.06); }
 }
 
 /* --------------------------------------------------------------------------

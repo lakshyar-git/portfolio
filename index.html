@@ -51,10 +51,10 @@
   <!-- Ambient Reactive Canvas Starfield (Warp Drift on Scroll & Mouse Parallax) -->
   <canvas id="cosmic-canvas" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></canvas>
 
-  <!-- Ambient Cosmic Gradient Blobs (Enhanced Luminosity) -->
-  <div class="cosmic-nebula-glow w-[580px] h-[580px] bg-nebula/22 top-[-100px] left-1/2 -translate-x-1/2" aria-hidden="true"></div>
-  <div class="cosmic-nebula-glow w-[480px] h-[480px] bg-dusty-cyan/16 top-[40%] right-[-100px]" aria-hidden="true"></div>
-  <div class="cosmic-nebula-glow w-[520px] h-[520px] bg-nebula/18 bottom-[10%] left-[-150px]" aria-hidden="true"></div>
+  <!-- Ambient Cosmic Gradient Blobs (Enhanced Luminosity & Organic Floating Motion) -->
+  <div class="cosmic-nebula-glow cosmic-float-1 w-[580px] h-[580px] bg-nebula/22 top-[-100px] left-1/2 -translate-x-1/2" aria-hidden="true"></div>
+  <div class="cosmic-nebula-glow cosmic-float-2 w-[480px] h-[480px] bg-dusty-cyan/16 top-[40%] right-[-100px]" aria-hidden="true"></div>
+  <div class="cosmic-nebula-glow cosmic-float-3 w-[520px] h-[520px] bg-nebula/18 bottom-[10%] left-[-150px]" aria-hidden="true"></div>
 
   <!-- =========================================================================
        1. NAVIGATION BAR
@@ -140,7 +140,7 @@
             <span>Welcome, I am</span>
           </div>
           <h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-starlight leading-[1.15]">
-            <span class="bg-gradient-to-r from-starlight via-dusty-cyan to-nebula bg-clip-text text-transparent">Lakshya R</span>
+            <span class="cosmic-shimmer-text">Lakshya R</span>
           </h1>
           <h2 class="text-lg sm:text-xl font-heading font-medium text-starlight/90">
             Computer Science & Data Science Undergraduate <span class="text-nebula">|</span> Software & Systems Developer
@@ -153,8 +153,8 @@
         <!-- Action CTAs & Highlights (Separated rows to prevent any text collisions) -->
         <div class="space-y-5 pt-2 w-full">
           <div class="reveal-init reveal-up delay-200 flex flex-wrap gap-4 items-center">
-            <!-- Primary CTA: Explore Projects -->
-            <a href="#projects" class="pop-hover inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-nebula-muted to-nebula hover:from-nebula hover:to-[#8c6eff] shadow-lg shadow-nebula/20 transition-all duration-300">
+            <!-- Primary CTA: Explore Projects with Light Shimmer -->
+            <a href="#projects" class="pop-hover btn-shimmer inline-flex items-center space-x-2 px-6 py-3 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-nebula-muted to-nebula hover:from-nebula hover:to-[#8c6eff] shadow-lg shadow-nebula/25 transition-all duration-300">
               <span>Explore Projects</span>
               <svg class="w-4 h-4 pop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -202,8 +202,8 @@
             />
           </div>
 
-          <!-- Ambient Cosmic Glow Ring -->
-          <div class="absolute -inset-1.5 bg-gradient-to-r from-nebula/50 to-dusty-cyan/40 rounded-full blur-xl -z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <!-- Ambient Cosmic Glow Ring (Breathing Halo) -->
+          <div class="absolute -inset-1.5 bg-gradient-to-r from-nebula/60 to-dusty-cyan/50 rounded-full blur-xl -z-10 cosmic-halo-breath opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
       </div>
 

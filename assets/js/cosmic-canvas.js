@@ -51,8 +51,8 @@
 
   function initStars() {
     stars = [];
-    const count = Math.floor((width * height) / 11000);
-    const starCount = Math.min(Math.max(count, 55), 120);
+    const count = Math.floor((width * height) / 9500);
+    const starCount = Math.min(Math.max(count, 70), 140);
 
     for (let i = 0; i < starCount; i++) {
       const depth = Math.random() * 0.8 + 0.2; // 0.2 (far) to 1.0 (near)
@@ -60,9 +60,9 @@
         x: Math.random() * width,
         y: Math.random() * height,
         depth: depth,
-        radius: (Math.random() * 1.3 + 0.3) * depth,
-        baseAlpha: (Math.random() * 0.5 + 0.2) * depth,
-        twinkleSpeed: (Math.random() * 0.02 + 0.008),
+        radius: (Math.random() * 1.35 + 0.35) * depth,
+        baseAlpha: (Math.random() * 0.45 + 0.35) * depth,
+        twinkleSpeed: (Math.random() * 0.022 + 0.01),
         twinkleOffset: Math.random() * Math.PI * 2,
         colorPrefix: starColors[Math.floor(Math.random() * starColors.length)],
         baseSpeedY: -(Math.random() * 0.18 + 0.05) * depth,
@@ -124,10 +124,10 @@
       if (s.x < 0) s.x = width;
       if (s.x > width) s.x = 0;
 
-      // Pulsing starlight twinkle
+      // Pulsing starlight twinkle (Brightened)
       s.twinkleOffset += s.twinkleSpeed * dt;
-      const alpha = s.baseAlpha + Math.sin(s.twinkleOffset) * 0.25;
-      const clampedAlpha = Math.max(0.08, Math.min(0.9, alpha));
+      const alpha = s.baseAlpha + Math.sin(s.twinkleOffset) * 0.28;
+      const clampedAlpha = Math.max(0.18, Math.min(1.0, alpha));
 
       // Draw star
       ctx.beginPath();
@@ -136,10 +136,10 @@
       ctx.fill();
 
       // Soft radiant aura for brighter/nearer stars
-      if (s.radius > 1.0) {
+      if (s.radius > 0.85) {
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.radius * 2.4, 0, Math.PI * 2);
-        ctx.fillStyle = s.colorPrefix + (clampedAlpha * 0.25) + ')';
+        ctx.arc(s.x, s.y, s.radius * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = s.colorPrefix + (clampedAlpha * 0.35) + ')';
         ctx.fill();
       }
     }
